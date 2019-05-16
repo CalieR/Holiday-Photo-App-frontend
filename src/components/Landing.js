@@ -40,6 +40,7 @@ class Landing extends Component {
 
   viewSignup = () => {
     this.setState({ choice: "signup" });
+    this.renderSignUp();
   };
 
   renderSignUp = () => {
@@ -63,6 +64,7 @@ class Landing extends Component {
               name="password"
             />
           </div>
+          <button>submit</button>
         </form>
       );
     }
@@ -74,7 +76,7 @@ class Landing extends Component {
         <h1>Welcome to Holiday Photo App!</h1>
         <h3>Please log in or sign up</h3>
         <button onClick={this.viewLogin}>Log in</button>
-        <button onClick={this.viewSignUp}>Sign up</button>
+        <button onClick={this.viewSignup}>Sign up</button>
 
         {this.renderSignUp()}
         {this.renderLogin()}
