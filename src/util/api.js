@@ -5,12 +5,14 @@ const headers = {
   Accepts: "application/json"
 };
 
+// routes to auth#create in order to create token
 const login = (username, password) => {
   return fetch(`${API_BASE_URL}/auth/create`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({ username, password })
   }).then(res => res.json());
+  
 };
 
 const getCurrentUser = token => {
@@ -19,9 +21,9 @@ const getCurrentUser = token => {
   }).then(res => res.json());
 };
 
-// const getPosts = token => {
+// const getAlbums = token => {
 //   console.log(headers);
-//   return fetch(`${API_BASE_URL}/posts`, {
+//   return fetch(`${API_BASE_URL}/albums`, {
 //     headers: { ...headers, Authorization: token }
 //   }).then(res => res.json());
 // };
@@ -29,5 +31,5 @@ const getCurrentUser = token => {
 export default {
   login,
   getCurrentUser
-//   getPosts
+//   getAlbums
 };

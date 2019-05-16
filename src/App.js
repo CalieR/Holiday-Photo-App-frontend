@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Landing from "./components/Landing";
+import UserPage from "./components/UserPage";
 import api from "./util/api";
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
     password: ""
   };
 
+  // if you refresh the page, a logged in user can still have their stuff displayed
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
@@ -37,10 +39,13 @@ class App extends Component {
   onLoginClicked = e => {
     e.preventDefault();
     api.login(this.state.username, this.state.password).then(data => {
-      // if data has data.error, then to not proceed
-      // if (data.error === undefined)
-      localStorage.setItem("token", data.jwt);
-      this.setState({ logged_in: true, username: data.username });
+      console.log(data);
+      if (data.error) {
+        alert("wrong login details entered!!");
+      } else {
+        localStorage.setItem("token", data.jwt);
+        this.setState({ logged_in: true, username: data.username });
+      }
     });
   };
 
@@ -56,14 +61,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Landing
-          logged_in={this.state.logged_in}
-          onLoginClicked={this.onLoginClicked}
-          handleLogOut={this.handleLogOut}
-          username={this.state.username}
-          handleChange={this.handleChange}
-          getPosts={this.getPosts}
-        />
+        {this.state.logged_in ? (
+          <UserPage />
+        ) : (
+          <Landing
+            logged_in={this.state.logged_in}
+            onLoginClicked={this.onLoginClicked}
+            onSignupClicked={this.onSignupClicked}
+            handleLogOut={this.handleLogOut}
+            username={this.state.username}
+            handleChange={this.handleChange}
+            getPosts={this.getPosts}
+          />
+        )}
       </div>
     );
   }

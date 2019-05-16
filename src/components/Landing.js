@@ -2,40 +2,82 @@ import React, { Component } from "react";
 
 class Landing extends Component {
   state = {
+    choice: "",
     username: "",
     password: ""
+  };
+
+  viewLogin = () => {
+    this.setState({ choice: "login" });
+  };
+
+  renderLogin = () => {
+    if (this.state.choice === "login") {
+      return (
+        <form>
+          <label>Login Form:</label>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              onChange={this.props.handleChange}
+              id="username"
+              type="text"
+              name="username"
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              onChange={this.props.handleChange}
+              id="password"
+              type="text"
+              name="password"
+            />
+          </div>
+          <button>submit</button>
+        </form>
+      );
+    }
+  };
+
+  viewSignup = () => {
+    this.setState({ choice: "signup" });
+  };
+
+  renderSignUp = () => {
+    if (this.state.choice === "signup") {
+      return (
+        <form>
+          <label>Signup Form</label>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              onChange={this.props.handleChange}
+              id="username"
+              type="text"
+              name="username"
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              onChange={this.props.handleChange}
+              id="password"
+              type="text"
+              name="password"
+            />
+          </div>
+        </form>
+      );
+    }
   };
 
   render() {
     return (
       <>
         <h1>Welcome to Holiday Photo App!</h1>
-        {this.props.logged_in ? (
-          <>
-            <p>You are logged in as {this.props.username}</p>
-            <button onClick={this.props.handleLogOut}>Log out</button>
-          </>
-        ) : (
-          <form>
-            <div>
-              <label htmlFor="username">Username:</label>
-              <input
-                onChange={this.props.handleChange}
-                id="username"
-                type="text"
-                name="username"
-              />
-              <label htmlFor="password">Password:</label>
-              <input
-                onChange={this.props.handleChange}
-                id="password"
-                type="text"
-                name="password"
-              />
-              <button onClick={this.props.onLoginClicked}>Log in</button>
-            </div>
-          </form>
-        )}
+        <h3>Please log in or sign up</h3>
+        <button onClick={this.viewLogin}>Log in</button>
+        <button onClick={this.viewSignUp}>Sign up</button>
+
+        {this.renderSignUp()}
+        {this.renderLogin()}
       </>
     );
   }
