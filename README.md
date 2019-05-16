@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## README
+
+This is the frontend repository for the Holiday Photo sharing app
+
+# Steps:
+
+- create app, remove logo etc.
+- build basic landing page to check login / signup written in backend.
+
 ## Available Scripts
 
 In the project directory, you can run:
