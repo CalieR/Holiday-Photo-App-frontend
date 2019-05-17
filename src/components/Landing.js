@@ -2,9 +2,7 @@ import React, { Component } from "react";
 
 class Landing extends Component {
   state = {
-    choice: "",
-    username: "",
-    password: ""
+    choice: ""
   };
 
   viewLogin = () => {
@@ -32,7 +30,7 @@ class Landing extends Component {
               name="password"
             />
           </div>
-          <button>submit</button>
+          <button onClick={this.props.onLoginClicked}>submit</button>
         </form>
       );
     }
@@ -40,14 +38,14 @@ class Landing extends Component {
 
   viewSignup = () => {
     this.setState({ choice: "signup" });
-    this.renderSignUp();
   };
 
   renderSignUp = () => {
     if (this.state.choice === "signup") {
       return (
         <form>
-          <label>Signup Form</label>
+          <label>Signup Form:</label>
+          <p>Choose a username (must be unique) and password</p>
           <div>
             <label htmlFor="username">Username:</label>
             <input
