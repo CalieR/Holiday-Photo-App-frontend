@@ -49,6 +49,22 @@ class App extends Component {
     });
   };
 
+  onSignupClicked = e => {
+    e.preventDefault();
+    // user.create (fetch)
+    // then api.login - duplication!
+    // refactor, pass route endpoint
+    api.signup(this.state.username, this.state.password).then(data => {
+      console.log(data);
+      if (data.error) {
+        alert("wrong signup details entered!!");
+      } else {
+        localStorage.setItem("token", data.jwt);
+        this.setState({ logged_in: true, username: data.username });
+      }
+    });
+  };
+
   handleLogOut = () => {
     localStorage.clear("token");
     this.setState({
@@ -62,7 +78,10 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.logged_in ? (
-          <UserPage handleLogOut={this.handleLogOut} username={this.state.username}/>
+          <UserPage
+            handleLogOut={this.handleLogOut}
+            username={this.state.username}
+          />
         ) : (
           <Landing
             logged_in={this.state.logged_in}

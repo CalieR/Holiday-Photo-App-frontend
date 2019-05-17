@@ -62,7 +62,7 @@ class Landing extends Component {
               name="password"
             />
           </div>
-          <button>submit</button>
+          <button onClick={this.props.onSignupClicked}>submit</button>
         </form>
       );
     }

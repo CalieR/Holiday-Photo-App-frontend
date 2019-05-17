@@ -12,7 +12,18 @@ const login = (username, password) => {
     headers: headers,
     body: JSON.stringify({ username, password })
   }).then(res => res.json());
-  
+};
+
+// create new user
+const signup = (username, password) => {
+  return fetch(`${API_BASE_URL}/api/v1/users`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({
+      username,
+      password
+    })
+  }).then(res => res.json());
 };
 
 const getCurrentUser = token => {
@@ -30,6 +41,7 @@ const getCurrentUser = token => {
 
 export default {
   login,
+  signup,
   getCurrentUser
-//   getAlbums
+  //   getAlbums
 };
