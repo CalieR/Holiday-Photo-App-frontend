@@ -1,14 +1,17 @@
 // container for all the albums
 
 import React, { Component } from "react";
+import AlbumCard from './AlbumCard'
 
 class Albums extends Component {
-  state = {
-   
-  };
+  state ={ }
+ 
 
   render() {
-    return <h1>I am a container to hold all the albums</h1>;
+    return <div>
+
+      {this.props.myAlbums.map(album => <AlbumCard key={album.id} album={album}/>)}
+    </div>
   }
 }
 

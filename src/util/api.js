@@ -36,12 +36,26 @@ const getUserProfile = () => {
   return fetch(`${API_BASE_URL}/api/v1/users/profile`, {
     headers: { ...headers, Authorization: localStorage.getItem("token") }
   }).then(res => res.json());
-  ;
+};
+
+// create new album
+const newAlbum = name => {
+  return fetch(`${API_BASE_URL}/api/v1/albums`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      name
+    })
+  }).then(resp => resp.json());
 };
 
 export default {
   login,
   signup,
   getCurrentUser,
-  getUserProfile
+  getUserProfile,
+  newAlbum
 };
