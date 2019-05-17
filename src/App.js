@@ -62,7 +62,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.logged_in ? (
-          <UserPage handleLogOut={this.handleLogOut}/>
+          <UserPage handleLogOut={this.handleLogOut} username={this.state.username}/>
         ) : (
           <Landing
             logged_in={this.state.logged_in}
