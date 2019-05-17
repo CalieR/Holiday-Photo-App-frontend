@@ -32,16 +32,16 @@ const getCurrentUser = token => {
   }).then(res => res.json());
 };
 
-// const getAlbums = token => {
-//   console.log(headers);
-//   return fetch(`${API_BASE_URL}/albums`, {
-//     headers: { ...headers, Authorization: token }
-//   }).then(res => res.json());
-// };
+const getUserProfile = () => {
+  return fetch(`${API_BASE_URL}/api/v1/users/profile`, {
+    headers: { ...headers, Authorization: localStorage.getItem("token") }
+  }).then(res => res.json());
+  ;
+};
 
 export default {
   login,
   signup,
-  getCurrentUser
-  //   getAlbums
+  getCurrentUser,
+  getUserProfile
 };
