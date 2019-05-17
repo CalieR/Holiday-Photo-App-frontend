@@ -1,3 +1,4 @@
+import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import "./App.css";
 import Landing from "./components/Landing";
@@ -20,15 +21,6 @@ class App extends Component {
       });
     }
   }
-
-  // getPosts = () => {
-  //   const token = localStorage.getItem("token");
-  //   api
-  //     .getPosts(token)
-  //     .then(posts =>
-  //       this.setState({ posts }, () => console.log(this.state.posts))
-  //     );
-  // };
 
   handleChange = e => {
     this.setState({
@@ -78,9 +70,14 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.logged_in ? (
-          <UserPage
-            handleLogOut={this.handleLogOut}
-            username={this.state.username}
+          <Route
+            path="/profile"
+            render={() => (
+              <UserPage
+                handleLogOut={this.handleLogOut}
+                username={this.state.username}
+              />
+            )}
           />
         ) : (
           <Landing
