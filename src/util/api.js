@@ -36,12 +36,24 @@ const getUserProfile = () => {
   return fetch(`${API_BASE_URL}/api/v1/users/profile`, {
     headers: { ...headers, Authorization: localStorage.getItem("token") }
   }).then(res => res.json());
-  ;
+};
+
+// create new album, which creates a new albumUser
+// so Auth header with token also has to be passed
+const newAlbum = name => {
+  return fetch(`${API_BASE_URL}/api/v1/albums`, {
+    method: "POST",
+    headers: { ...headers, Authorization: localStorage.getItem("token") },
+    body: JSON.stringify({
+      name
+    })
+  }).then(resp => resp.json());
 };
 
 export default {
   login,
   signup,
   getCurrentUser,
-  getUserProfile
+  getUserProfile,
+  newAlbum
 };
