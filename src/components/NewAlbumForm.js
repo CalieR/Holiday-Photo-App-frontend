@@ -14,10 +14,8 @@ class NewAlbumForm extends Component {
   };
 
   handleSubmit = event => {
-    console.log('handleSubmit', event);
     event.preventDefault();
     api.newAlbum(this.state.newAlbumName).then(data => {
-      console.log(data);
       this.props.refreshMyAlbums(data);
     });
     this.setState({
@@ -26,14 +24,11 @@ class NewAlbumForm extends Component {
   };
 
   render() {
+    console.log(this.state, this.props);
 
-    console.log(this.state, this.props)
-    
     return (
-      <div className="ui form" >
-        <Form
-          className="ui form"
-          onSubmit={this.handleSubmit} >
+      <div className="ui form">
+        <Form className="ui form" onSubmit={this.handleSubmit}>
           <Label size="massive" pointing="below">
             Give your new album a name
           </Label>

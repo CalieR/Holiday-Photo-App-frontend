@@ -38,7 +38,8 @@ const getUserProfile = () => {
   }).then(res => res.json());
 };
 
-// create new album
+// create new album, which creates a new albumUser
+// so Auth header with token also has to be passed
 const newAlbum = name => {
   return fetch(`${API_BASE_URL}/api/v1/albums`, {
     method: "POST",
