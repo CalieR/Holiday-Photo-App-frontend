@@ -41,9 +41,9 @@ class UserPage extends Component {
   };
 
   // new album form needs to trigger this function
-  refreshMyAlbums = () => {
+  refreshMyAlbums = newAlbum => {
     this.setState({
-      //  spread in myAlbums plus the newly created album
+      myAlbums: [...this.state.myAlbums, newAlbum ]
     })
   }
 
@@ -57,7 +57,7 @@ class UserPage extends Component {
         <button onClick={this.handleNewAlbumClick}>Create a new album</button>
         <div className="new-album-form-container">
           {this.state.viewNewAlbumForm ? (
-            <NewAlbumForm clearNewAlbumForm={this.clearNewAlbumForm} myAlbums={}/>
+            <NewAlbumForm clearNewAlbumForm={this.clearNewAlbumForm} refreshMyAlbums={this.refreshMyAlbums}/>
           ) : null}
         </div>
         <button onClick={this.props.handleLogOut}>Log out</button>

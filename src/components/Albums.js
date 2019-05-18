@@ -1,17 +1,20 @@
 // container for all the albums
 
 import React, { Component } from "react";
-import AlbumCard from './AlbumCard'
+import AlbumCard from "./AlbumCard";
+import { Card } from "semantic-ui-react";
 
 class Albums extends Component {
-  state ={ }
- 
+  state = {};
 
   render() {
-    return <div>
-
-      {this.props.myAlbums.map(album => <AlbumCard key={album.id} album={album}/>)}
-    </div>
+    return (
+      <Card.Group>
+        {this.props.myAlbums.map(album => (
+          <AlbumCard key={album.id} album={album} />
+        ))}
+      </Card.Group>
+    );
   }
 }
 

@@ -42,10 +42,7 @@ const getUserProfile = () => {
 const newAlbum = name => {
   return fetch(`${API_BASE_URL}/api/v1/albums`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
+    headers: { ...headers, Authorization: localStorage.getItem("token") },
     body: JSON.stringify({
       name
     })
