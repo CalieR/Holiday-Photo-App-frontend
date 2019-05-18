@@ -50,10 +50,16 @@ const newAlbum = name => {
   }).then(resp => resp.json());
 };
 
+// find one album when clicked on
+const getAlbum = id => {
+  return fetch(`${API_BASE_URL}/api/v1/albums/${id}`).then(resp => resp.json());
+};
+
 export default {
   login,
   signup,
   getCurrentUser,
   getUserProfile,
-  newAlbum
+  newAlbum,
+  getAlbum
 };
