@@ -1,3 +1,5 @@
+// test uploader
+
 import React, { Component } from "react";
 import api from "../util/api";
 
@@ -31,6 +33,8 @@ class Uploader extends Component {
             onChange={this.handleChange}
             id="image"
             type="file"
+            accept="image/*
+            "
             name="image"
           />
           <label htmlFor="title">Title:</label>
