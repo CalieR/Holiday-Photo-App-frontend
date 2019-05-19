@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Card } from "semantic-ui-react";
 import PhotoCard from "./PhotoCard";
 
 class PhotosContainer extends Component {
@@ -6,12 +7,12 @@ class PhotosContainer extends Component {
   render() {
     return (
       <>
-        <p>I am the photos container, I will render the photos</p>
-        {this.props.photos.map(photo => (
-          <PhotoCard key={photo.id} photo={photo}>
-            
-          </PhotoCard>
-        ))}
+        <h3>Photos container</h3>
+        <Card.Group>
+          {this.props.photos.map(photo => (
+            <PhotoCard key={photo.id} photo={photo} />
+          ))}
+        </Card.Group>
       </>
     );
   }

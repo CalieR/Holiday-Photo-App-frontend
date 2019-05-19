@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PhotosContainer from "./PhotosContainer";
+import Uploader from "./Uploader"
 import api from "../util/api";
 
 class AlbumContentPage extends Component {
@@ -8,7 +9,6 @@ class AlbumContentPage extends Component {
   };
 
   componentDidMount() {
-    console.log("mounted");
     // hard-coded for now but this will be provided by album card click
     this.getAlbum(1);
   }
@@ -43,6 +43,7 @@ class AlbumContentPage extends Component {
       <div>
         <PhotosContainer photos={this.state.photos} />
         <button>Upload a photo to this album</button>
+        <Uploader />
         <button>Share this album with another user</button>
       </div>
     );
