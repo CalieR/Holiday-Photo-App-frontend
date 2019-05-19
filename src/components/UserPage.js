@@ -1,24 +1,24 @@
 import React, { Component } from "react";
-import Albums from "./Albums";
+import AlbumsContainer from "./AlbumsContainer";
 import NewAlbumForm from "./NewAlbumForm";
 import api from "../util/api";
+
 
 class UserPage extends Component {
   state = {
     name: "",
     myAlbums: [],
-    viewNewAlbumForm: false
+    viewNewAlbumForm: false,
+    
   };
 
   // if there is a token stored,
-  //
-
   // set state if successfully completed
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
       api.getUserProfile().then(user => {
-        console.log(user);
+        // console.log(user);
         this.setState({
           username: user.username,
           myAlbums: user.albums
@@ -52,7 +52,7 @@ class UserPage extends Component {
       <>
         <h1>Welcome to your page, {this.state.username}</h1>
         <h4>Your albums (click one to view contents):</h4>
-        <Albums myAlbums={this.state.myAlbums} />
+        <AlbumsContainer myAlbums={this.state.myAlbums} />
 
         <button onClick={this.handleNewAlbumClick}>Create a new album</button>
         <div className="new-album-form-container">
@@ -60,6 +60,7 @@ class UserPage extends Component {
             <NewAlbumForm clearNewAlbumForm={this.clearNewAlbumForm} refreshMyAlbums={this.refreshMyAlbums}/>
           ) : null}
         </div>
+       
         <button onClick={this.props.handleLogOut}>Log out</button>
       </>
     );
