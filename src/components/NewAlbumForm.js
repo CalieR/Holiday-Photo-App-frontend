@@ -21,10 +21,11 @@ class NewAlbumForm extends Component {
     this.setState({
       newAlbumName: ""
     });
+    this.props.clearNewAlbumForm();
   };
 
   render() {
-    console.log(this.state, this.props);
+    console.log(this.props);
 
     return (
       <div className="ui form">
