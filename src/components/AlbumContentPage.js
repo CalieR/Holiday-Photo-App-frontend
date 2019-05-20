@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PhotosContainer from "./PhotosContainer";
-import Uploader from "./Uploader"
+import PhotoUploader from "./PhotoUploader"
 import api from "../util/api";
 
 class AlbumContentPage extends Component {
@@ -42,8 +42,8 @@ class AlbumContentPage extends Component {
     return (
       <div>
         <PhotosContainer photos={this.state.photos} />
-        <button>Upload a photo to this album</button>
-        <Uploader />
+        {/* <button>Upload a photo to this album</button> */}
+        <PhotoUploader />
         <button>Share this album with another user</button>
       </div>
     );
