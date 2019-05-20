@@ -52,9 +52,9 @@ class UserPage extends Component {
       <>
         <h1>Welcome to your page, {this.state.username}</h1>
         <h4>Your albums (click one to view contents):</h4>
+        <button onClick={this.handleNewAlbumClick}>Create a new album</button>
         <AlbumsContainer myAlbums={this.state.myAlbums} />
 
-        <button onClick={this.handleNewAlbumClick}>Create a new album</button>
         <div className="new-album-form-container">
           {this.state.viewNewAlbumForm ? (
             <NewAlbumForm clearNewAlbumForm={this.clearNewAlbumForm} refreshMyAlbums={this.refreshMyAlbums}/>

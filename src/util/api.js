@@ -55,8 +55,17 @@ const getAlbum = id => {
   return fetch(`${API_BASE_URL}/api/v1/albums/${id}`).then(resp => resp.json());
 };
 
+const inviteUsers = id => {
+  return fetch(`${API_BASE_URL}/api/v1/albums/invite`, {
+    method: "POST",
+    headers: { ...headers },
+    body: JSON.stringify({
+      id
+    })
+  }).then(resp => resp.json());
+};
+
 // create a new photo in an album:
-// photos#create makes the call to cloudinary to get a url
 // uses get_current_user so needs auth in headers
 const newPhoto = (image, title, description) => {
   debugger;
@@ -71,6 +80,17 @@ const newPhoto = (image, title, description) => {
   }).then(resp => resp.json());
 };
 
+const addUserToAlbum = (user, album) => {
+  return fetch(`${API_BASE_URL}/api/v1/album_users`, {
+    method: "POST",
+    headers: { ...headers },
+    body: JSON.stringify({
+      user,
+      album
+    })
+  }).then(resp => resp.json());
+};
+
 export default {
   login,
   signup,
@@ -78,5 +98,7 @@ export default {
   getUserProfile,
   newAlbum,
   getAlbum,
-  newPhoto
+  newPhoto,
+  inviteUsers,
+  addUserToAlbum
 };

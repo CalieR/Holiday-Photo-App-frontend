@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import api from "../util/api";
-import { Form, Label } from "semantic-ui-react";
+import { Form, Label, Container } from "semantic-ui-react";
 
 const CLOUDINARY_UPLOAD_PRESET = "wc5u6xxi";
 const CLOUDINARY_UPLOAD_URL =
@@ -56,7 +56,17 @@ class PhotoUploader extends Component {
       this.state.title,
       this.state.description
     );
+   this.resetState()
   };
+
+  resetState = () => {
+    this.setState({
+      uploadedFileCloudinaryUrl: "",
+      uploadedFile: null,
+      title: "",
+      description: ""
+    })
+  }
 
   // superagent will post to cloudinary:
   // . field method allows data to be attached to request
@@ -83,7 +93,7 @@ class PhotoUploader extends Component {
 
   render() {
     return (
-      <div>
+      <Container text>
         <div className="FileUpload">
           <Dropzone onDrop={this.onImageDrop} accept="image/*" multiple={false}>
             {({ getRootProps, getInputProps }) => {
@@ -145,7 +155,7 @@ class PhotoUploader extends Component {
             <Form.Button className="fluid" content="Submit" />
           </Form>
         </div>
-      </div>
+      </Container>
     );
   }
 }
