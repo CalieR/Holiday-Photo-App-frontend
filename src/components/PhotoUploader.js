@@ -14,18 +14,6 @@ const CLOUDINARY_UPLOAD_URL =
 // Create your ruby file api upload end point - POST api/photos/upload (userId, title, description, file: base64 encoded file data)
 // https://cloudinary.com/documentation/image_upload_api_reference
 
-// Build react-dropzone component here
-// https://github.com/react-dropzone/react-dropzone
-
-// DropZone = function useDropZone(onDrop) {
-//   postMessage("api/photos/upload", {
-//     user_id: 123,
-//     title: "My new photo",
-//     description: "A photo taken of me at the weekend",
-//     file: "base64 encoded file data"
-//   });
-// };
-
 class PhotoUploader extends Component {
   state = {
     uploadedFileCloudinaryUrl: "",
@@ -49,14 +37,17 @@ class PhotoUploader extends Component {
     });
   };
 
+
   handleSubmit = (e) => {
     e.preventDefault();
     api.newPhoto(
       this.state.uploadedFileCloudinaryUrl,
       this.state.title,
-      this.state.description
+      this.state.description,
+      this.props.chosenAlbum.id
     );
    this.resetState()
+   this.props.hideUpload()
   };
 
   resetState = () => {
@@ -76,13 +67,11 @@ class PhotoUploader extends Component {
       .post(CLOUDINARY_UPLOAD_URL)
       .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
       .field("file", file);
-
     // .end performs the request, a callback is provided
     upload.end((err, response) => {
       if (err) {
         console.error(err);
       }
-
       if (response.body.secure_url !== "") {
         this.setState({
           uploadedFileCloudinaryUrl: response.body.secure_url
@@ -152,6 +141,7 @@ class PhotoUploader extends Component {
               value={this.state.descripton}
               onChange={this.handleChange}
             />
+            <button onClick={this.props.hideUpload}>Cancel</button>
             <Form.Button className="fluid" content="Submit" />
           </Form>
         </div>

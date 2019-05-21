@@ -71,14 +71,7 @@ class UserPage extends Component {
 }
 
 export default UserPage;
-{
-  /* {this.state.viewNewAlbumForm ? (
-            <NewAlbumForm
-              clearNewAlbumForm={this.clearNewAlbumForm}
-              refreshMyAlbums={this.refreshMyAlbums}
-            />)} 
-           */
-}
+
 {
   /* } else {
       return <div>"you have to be logged in to view that page!"</div>;
