@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
 import album_icon from "../images/album_icon.png";
+
 // import api from "../util/api";
 
 class AlbumCard extends Component {
@@ -9,14 +10,14 @@ class AlbumCard extends Component {
 
   render() {
     return (
-      <Card >
-        <Image src={album_icon} wrapped ui={false} />
+      <Card>
+        <Image src={album_icon}  wrapped ui={false} />
         <Card.Content>
           <Card.Header
             id={this.props.album.id}
            
           >
-            {this.props.album.name}
+           <Card.Header onClick={() => this.props.handleAlbumChoiceClick(this.props.album)}>{this.props.album.name}</Card.Header>
           </Card.Header>
         </Card.Content>
         <Card.Content extra>

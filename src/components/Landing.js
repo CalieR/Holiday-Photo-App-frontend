@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class Landing extends Component {
   state = {
     choice: ""
@@ -30,7 +31,9 @@ class Landing extends Component {
               name="password"
             />
           </div>
-          <button onClick={this.props.onLoginClicked}>submit</button>
+        
+            <button onClick={this.props.onLoginClicked}>submit</button>
+         
         </form>
       );
     }
@@ -62,7 +65,9 @@ class Landing extends Component {
               name="password"
             />
           </div>
-          <button onClick={this.props.onSignupClicked}>submit</button>
+         
+            <button onClick={this.props.onSignupClicked}>submit</button>
+         
         </form>
       );
     }

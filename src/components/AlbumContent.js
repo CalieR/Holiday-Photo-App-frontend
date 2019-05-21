@@ -4,15 +4,15 @@ import PhotoUploader from "./PhotoUploader";
 import api from "../util/api";
 import Invitation from "./Invitation";
 
-class AlbumContentPage extends Component {
+class AlbumContent extends Component {
   state = {
     photos: [],
-    shareClicked: false
+    shareClicked: false,
+    showUpload: false
   };
 
   componentDidMount() {
-    // hard-coded for now but this will be provided by clicking on an album card
-    this.getAlbum(1);
+    this.getAlbum(this.props.chosenAlbum.id);
   }
 
   getMockAlbum = albumId => {
@@ -35,7 +35,6 @@ class AlbumContentPage extends Component {
 
   getAlbum = albumId => {
     api.getAlbum(albumId).then(data => {
-      console.log(data);
       this.setState({
         photos: data.photos
       });
@@ -55,12 +54,13 @@ class AlbumContentPage extends Component {
           Share this album with another user
         </button>
         {this.state.shareClicked === true ? <Invitation /> : null}
+
         <PhotosContainer photos={this.state.photos} />
-        {/* <button>Upload a photo to this album</button> */}
-        <PhotoUploader />
+        <button>Upload a photo to this album</button>
+        {this.state.showUpload ? <PhotoUploader /> : null}
       </div>
     );
   }
 }
 
-export default AlbumContentPage;
+export default AlbumContent;

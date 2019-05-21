@@ -70,15 +70,18 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.logged_in ? (
-          <Route
-            path="/profile"
-            render={() => (
-              <UserPage
-                handleLogOut={this.handleLogOut}
-                username={this.state.username}
-              />
-            )}
-          />
+          <>
+            <Route
+              path="/profile"
+              render={() => (
+                <UserPage
+                  handleLogOut={this.handleLogOut}
+                  username={this.state.username}
+                />
+              )}
+            />
+            <Route path="/testing" render={() => <div>I worked</div>} />
+          </>
         ) : (
           <Landing
             logged_in={this.state.logged_in}
@@ -94,4 +97,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

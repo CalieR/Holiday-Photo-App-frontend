@@ -24,6 +24,8 @@ class NewAlbumForm extends Component {
     this.props.clearNewAlbumForm();
   };
 
+
+
   render() {
     console.log(this.props);
 
@@ -42,6 +44,7 @@ class NewAlbumForm extends Component {
             value={this.state.newAlbumName}
             onChange={this.handleChange}
           />
+          <button onClick={this.props.clearNewAlbumForm} >Cancel</button>
           <Form.Button className="fluid" content="Submit" />
         </Form>
       </div>

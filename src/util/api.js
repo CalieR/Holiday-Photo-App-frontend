@@ -55,11 +55,14 @@ const getAlbum = id => {
   return fetch(`${API_BASE_URL}/api/v1/albums/${id}`).then(resp => resp.json());
 };
 
-const inviteUsers = id => {
+
+// refactored to add admin param, check still works ok...
+const inviteUsers = (admin, id) => {
   return fetch(`${API_BASE_URL}/api/v1/albums/invite`, {
     method: "POST",
     headers: { ...headers },
     body: JSON.stringify({
+      admin,
       id
     })
   }).then(resp => resp.json());

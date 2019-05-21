@@ -5,7 +5,8 @@ import api from "../util/api";
 class Invitation extends Component {
   state = {
     users: [],
-    selectedUser: ""
+    selectedUser: "",
+    admin: false
   };
 
   // need to code this to take current album id
@@ -23,7 +24,7 @@ class Invitation extends Component {
   handleClick = e => {
     e.preventDefault();
     // album_id currently hardcoded, update to current album
-    api.addUserToAlbum(parseInt(this.state.selectedUser, 10), 1);
+    api.addUserToAlbum(this.state.admin, parseInt(this.state.selectedUser, 10), 1);
     this.setState({
       selectedUser: ""
     });
