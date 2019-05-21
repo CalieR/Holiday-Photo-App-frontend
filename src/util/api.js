@@ -70,15 +70,16 @@ const inviteUsers = (admin, id) => {
 
 // create a new photo in an album:
 // uses get_current_user so needs auth in headers
-const newPhoto = (image, title, description) => {
-  debugger;
+const newPhoto = (image, title, description, album) => {
+  // debugger;
   return fetch(`${API_BASE_URL}/api/v1/photos`, {
     method: "POST",
     headers: { ...headers, Authorization: localStorage.getItem("token") },
     body: JSON.stringify({
       image,
       title,
-      description
+      description,
+      album
     })
   }).then(resp => resp.json());
 };

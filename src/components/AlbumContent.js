@@ -7,7 +7,7 @@ import Invitation from "./Invitation";
 class AlbumContent extends Component {
   state = {
     photos: [],
-    shareClicked: false,
+    showShare: false,
     showUpload: false
   };
 
@@ -41,23 +41,36 @@ class AlbumContent extends Component {
     });
   };
 
-  handleClick = () => {
+  handleShareClick = () => {
     this.setState({
-      shareClicked: true
+      showShare: true
     });
   };
+
+  handleUploadClick = () => {
+    this.setState({
+      showUpload: true
+    })
+    console.log(this.props.chosenAlbum)
+  }
+
+  hideUpload = () => {
+    this.setState({
+      showUpload: false
+    })
+  }
 
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>
+        <button onClick={this.handleShareClick}>
           Share this album with another user
         </button>
         {this.state.shareClicked === true ? <Invitation /> : null}
 
         <PhotosContainer photos={this.state.photos} />
-        <button>Upload a photo to this album</button>
-        {this.state.showUpload ? <PhotoUploader /> : null}
+        <button onClick={this.handleUploadClick}>Upload a photo to this album</button>
+        {this.state.showUpload ? <PhotoUploader hideUpload={this.hideUpload} chosenAlbum={this.props.chosenAlbum}/> : null}
       </div>
     );
   }
