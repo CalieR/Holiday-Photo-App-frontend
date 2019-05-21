@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AlbumsContainer from "./AlbumsContainer";
-import NewAlbumForm from "./NewAlbumForm";
 import api from "../util/api";
 import AlbumContent from "./AlbumContent";
 
@@ -72,8 +71,4 @@ class UserPage extends Component {
 
 export default UserPage;
 
-{
-  /* } else {
-      return <div>"you have to be logged in to view that page!"</div>;
-    } */
-}
+
