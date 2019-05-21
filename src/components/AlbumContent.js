@@ -41,10 +41,12 @@ class AlbumContent extends Component {
     });
   };
 
-  handleShareClick = () => {
+  handleShareClick = e => {
     this.setState({
       showShare: true
     });
+    console.log(e)
+    console.log(this.state.showShare)
   };
 
   handleUploadClick = () => {
@@ -63,10 +65,10 @@ class AlbumContent extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleShareClick}>
+        <button onClick={() => this.handleShareClick()}>
           Share this album with another user
         </button>
-        {this.state.shareClicked === true ? <Invitation /> : null}
+        {this.state.showShare === true ? <Invitation chosenAlbum={this.props.chosenAlbum}/> : null}
 
         <PhotosContainer photos={this.state.photos} />
         <button onClick={this.handleUploadClick}>Upload a photo to this album</button>

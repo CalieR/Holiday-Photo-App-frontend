@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import api from "../util/api";
-// import { Dropdown } from "semantic-ui-react";
 
 class Invitation extends Component {
   state = {
@@ -11,7 +10,7 @@ class Invitation extends Component {
 
   // need to code this to take current album id
   componentDidMount() {
-    api.inviteUsers(1).then(data => {
+    api.inviteUsers(this.state.admin, this.props.chosenAlbum.id).then(data => {
       let usersFromAPI = data.map(user => {
         return { value: user.id, display: user.username };
       });
@@ -24,7 +23,11 @@ class Invitation extends Component {
   handleClick = e => {
     e.preventDefault();
     // album_id currently hardcoded, update to current album
-    api.addUserToAlbum(this.state.admin, parseInt(this.state.selectedUser, 10), 1);
+    api.addUserToAlbum(
+      parseInt(this.state.selectedUser, 10),
+      this.props.chosenAlbum.id,
+      this.state.admin
+    );
     this.setState({
       selectedUser: ""
     });
@@ -33,6 +36,7 @@ class Invitation extends Component {
   render() {
     return (
       <div>
+        <p>Select a user to add:</p>
         <select
           value={this.state.selectedUser}
           onChange={e => this.setState({ selectedUser: e.target.value })}

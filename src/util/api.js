@@ -55,7 +55,6 @@ const getAlbum = id => {
   return fetch(`${API_BASE_URL}/api/v1/albums/${id}`).then(resp => resp.json());
 };
 
-
 // refactored to add admin param, check still works ok...
 const inviteUsers = (admin, id) => {
   return fetch(`${API_BASE_URL}/api/v1/albums/invite`, {
@@ -64,6 +63,18 @@ const inviteUsers = (admin, id) => {
     body: JSON.stringify({
       admin,
       id
+    })
+  }).then(resp => resp.json());
+};
+
+const addUserToAlbum = (user, album, admin) => {
+  return fetch(`${API_BASE_URL}/api/v1/album_users`, {
+    method: "POST",
+    headers: { ...headers },
+    body: JSON.stringify({
+      user,
+      album,
+      admin
     })
   }).then(resp => resp.json());
 };
@@ -84,16 +95,6 @@ const newPhoto = (image, title, description, album) => {
   }).then(resp => resp.json());
 };
 
-const addUserToAlbum = (user, album) => {
-  return fetch(`${API_BASE_URL}/api/v1/album_users`, {
-    method: "POST",
-    headers: { ...headers },
-    body: JSON.stringify({
-      user,
-      album
-    })
-  }).then(resp => resp.json());
-};
 
 export default {
   login,
