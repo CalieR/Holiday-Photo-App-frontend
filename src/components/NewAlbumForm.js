@@ -27,7 +27,6 @@ class NewAlbumForm extends Component {
 
 
   render() {
-    console.log(this.props);
 
     return (
       <div className="ui form">

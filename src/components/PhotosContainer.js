@@ -7,8 +7,8 @@ class PhotosContainer extends Component {
   render() {
     return (
       <>
-        <h3>Photos in this album:</h3>
-        <Card.Group>
+        <h3>{this.props.photos.length} Photos in this album:</h3>
+        <Card.Group className="App-container">
           {this.props.photos.map(photo => (
             <PhotoCard key={photo.id} photo={photo} />
           ))}

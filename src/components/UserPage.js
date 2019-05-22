@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AlbumsContainer from "./AlbumsContainer";
 import api from "../util/api";
 import AlbumContent from "./AlbumContent";
+import NavBar from './NavBar'
 
 class UserPage extends Component {
   state = {
@@ -54,13 +55,16 @@ class UserPage extends Component {
   render() {
     return (
       <>
-        <h1>Welcome to your page, {this.state.username}</h1>
-        <button onClick={this.props.handleLogOut}>Log out</button>
+       <NavBar username={this.props.username} handleLogOut={this.props.handleLogOut}/>
         {this.state.chosenAlbum ? (
           <AlbumContent chosenAlbum={this.state.chosenAlbum} />
         ) : (
           <AlbumsContainer
             myAlbums={this.state.myAlbums}
+            viewNewAlbumForm={this.state.viewNewAlbumForm}
+            clearNewAlbumForm={this.clearNewAlbumForm}
+            refreshMyAlbums={this.refreshMyAlbums}
+            handleNewAlbumClick={this.handleNewAlbumClick}
             handleAlbumChoiceClick={this.handleAlbumChoiceClick}
           />
         )}
