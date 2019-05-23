@@ -1,7 +1,7 @@
-// test uploader
-
+// TEST UPLOADER!!!
 import React, { Component } from "react";
 import api from "../util/api";
+import { Form, Label, Button } from "semantic-ui-react";
 
 class Uploader extends Component {
   state = {
@@ -25,7 +25,7 @@ class Uploader extends Component {
 
   render() {
     return (
-      <form>
+      <Form>
         <label>New Photo Form:</label>
         <div>
           <label htmlFor="image">Image:</label>
@@ -33,8 +33,7 @@ class Uploader extends Component {
             onChange={this.handleChange}
             id="image"
             type="file"
-            accept="image/*
-            "
+            accept="image/*"
             name="image"
           />
           <label htmlFor="title">Title:</label>
@@ -52,8 +51,8 @@ class Uploader extends Component {
             name="description"
           />
         </div>
-        <button onClick={this.onPhotoSubmit}>submit</button>
-      </form>
+        <Button onClick={this.onPhotoSubmit}>Submit</Button>
+      </Form>
     );
   }
 }

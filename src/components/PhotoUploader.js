@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import api from "../util/api";
-import { Form, Label, Container, Segment } from "semantic-ui-react";
+import { Form, Label, Segment, Icon, Button } from "semantic-ui-react";
 
 const CLOUDINARY_UPLOAD_PRESET = "wc5u6xxi";
 const CLOUDINARY_UPLOAD_URL =
@@ -23,7 +23,7 @@ class PhotoUploader extends Component {
   };
 
   onImageDrop = files => {
-    debugger;
+    // debugger;
     this.setState({
       uploadedFile: files[0]
     });
@@ -39,30 +39,27 @@ class PhotoUploader extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // if in here to make sure the title and description are not blank
     api.newPhoto(
       this.state.uploadedFileCloudinaryUrl,
       this.state.title,
       this.state.description,
       this.props.chosenAlbum.id
     );
-    this.resetState();
-    this.props.hideUpload();
-  };
-
-  resetState = () => {
     this.setState({
       uploadedFileCloudinaryUrl: "",
       uploadedFile: null,
       title: "",
       description: ""
     });
+    this.props.hideUpload();
+    // this is only working on click not return key
+    this.props.getAlbum(this.props.chosenAlbum.id);
+    this.props.showPhotos();
   };
 
   // superagent will post to cloudinary:
   // . field method allows data to be attached to request
   handleImageUpload = file => {
-    // debugger;
     let upload = request
       .post(CLOUDINARY_UPLOAD_URL)
       .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
@@ -82,18 +79,21 @@ class PhotoUploader extends Component {
 
   render() {
     return (
-      <Container text>
-        <div className="FileUpload">
+      <div>
+        <div className="dropzone">
+          <Button onClick={this.props.hideUpload}>Cancel</Button>
           <Dropzone onDrop={this.onImageDrop} accept="image/*" multiple={false}>
             {({ getRootProps, getInputProps }) => {
               return (
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
                   {
-                    <Segment size="massive">
-                      <p>
-                        Drop a file here, or click to select a file to upload.
-                      </p>
+                    <Segment inverted color="olive" tertiary>
+                      <h3>
+                        Drop a file here, or click to select a file from your
+                        computer.
+                      </h3>
+                      <Icon name="add" size="big" />
                     </Segment>
                   }
                 </div>
@@ -104,48 +104,48 @@ class PhotoUploader extends Component {
 
         <div>
           {this.state.uploadedFileCloudinaryUrl === "" ? null : (
-            <div>
-              <p>{this.state.uploadedFile.name}</p>
-              <img
-                src={this.state.uploadedFileCloudinaryUrl}
-                alt="cloudinary url"
-              />
-            </div>
+            <>
+              <div className="uploaded-image-preview">
+                <p>{this.state.uploadedFile.name}</p>
+                <img
+                  src={this.state.uploadedFileCloudinaryUrl}
+                  alt="cloudinary url"
+                />
+              </div>
+              <div className="ui form">
+                <Form className="ui form">
+                  <Label size="large">Give your new image a title</Label>
+
+                  <Form.Input
+                    required
+                    className="field"
+                    type="text"
+                    placeholder="Image title"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.handleChange}
+                  />
+                  <Label size="large">Give your new image a description:</Label>
+
+                  <Form.Input
+                    required
+                    className="field"
+                    type="text"
+                    placeholder="Image description"
+                    name="description"
+                    value={this.state.descripton}
+                    onChange={this.handleChange}
+                  />
+                  <Form.Group inline>
+                    <Button onClick={this.handleSubmit}>Submit</Button>
+                    <Button onClick={this.props.hideUpload}>Cancel</Button>
+                  </Form.Group>
+                </Form>
+              </div>
+            </>
           )}
         </div>
-
-
-        <div className="ui form">
-          <Form className="ui form" onSubmit={this.handleSubmit}>
-            <Label size="large">Give your new image a title</Label>
-
-            <Form.Input
-              required
-              className="field"
-              type="text"
-              placeholder="Image title"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleChange}
-            />
-            <Label size="large">Give your new image a description:</Label>
-
-            <Form.Input
-              required
-              className="field"
-              type="text"
-              placeholder="Image description"
-              name="description"
-              value={this.state.descripton}
-              onChange={this.handleChange}
-            />
-            <Form.Group inline>
-              <Form.Button content="Cancel" onClick={this.props.hideUpload} />
-              <Form.Button className="fluid" content="Submit" />
-            </Form.Group>
-          </Form>
-        </div>
-      </Container>
+      </div>
     );
   }
 }

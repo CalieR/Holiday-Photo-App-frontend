@@ -3,6 +3,18 @@
   /* border: 3px solid black; */
 }
 
+.welcome {
+  margin: 2rem auto;
+  /* border: 2px solid green; */
+  
+}
+
+.login-signup {
+  margin-top: 2rem;
+  padding: 2rem;
+  /* border: 2px solid brown; */
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -29,7 +41,28 @@
   
 }
 
+.albums-control {
+  /* border: 2px solid blue; */
+  margin-bottom: 2rem;
+  
+}
 
+.photo-uploader-container {
+  border: 2px solid red;
+}
+
+.dropzone {
+  border:2px solid brown;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-body {
+  width: 80%;
+  margin: auto;
+}
 
 
 

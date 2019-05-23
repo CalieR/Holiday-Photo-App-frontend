@@ -65,6 +65,7 @@ class UserPage extends Component {
           username={this.props.username}
           handleLogOut={this.props.handleLogOut}
         />
+        <div className="main-body">
         {this.state.chosenAlbum ? (
           <AlbumContent chosenAlbum={this.state.chosenAlbum} resetAlbumChoice={this.resetAlbumChoice}/>
         ) : (
@@ -78,6 +79,7 @@ class UserPage extends Component {
            
           />
         )}
+        </div>
       </>
     );
   }

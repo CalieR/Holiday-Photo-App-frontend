@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
 import api from "../util/api";
 
 class Invitation extends Component {
@@ -22,7 +23,6 @@ class Invitation extends Component {
 
   handleClick = e => {
     e.preventDefault();
-    // album_id currently hardcoded, update to current album
     api.addUserToAlbum(
       parseInt(this.state.selectedUser, 10),
       this.props.chosenAlbum.id,
@@ -47,7 +47,7 @@ class Invitation extends Component {
             </option>
           ))}
         </select>
-        <button onClick={this.handleClick}>Add user</button>
+        <Button onClick={this.handleClick}>Add user</Button>
       </div>
     );
   }

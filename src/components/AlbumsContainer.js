@@ -3,9 +3,9 @@
 import React, { Component } from "react";
 import AlbumCard from "./AlbumCard";
 import AlbumContent from "./AlbumContent";
-import { Button, Card } from "semantic-ui-react";
+import { Container, Button, Card } from "semantic-ui-react";
 import NewAlbumForm from "./NewAlbumForm";
-// import api from "../util/api";
+
 
 class AlbumsContainer extends Component {
   state = {
@@ -17,19 +17,23 @@ class AlbumsContainer extends Component {
   render() {
     return (
       <>
-        <h4>Your albums (click one to view contents):</h4>
+      <div className="albums-control">
+        <h1>YOUR ALBUMS:</h1>
         <Button
           content="Create a new album"
           icon="add"
           labelPosition="left"
           onClick={this.props.handleNewAlbumClick}
         />
+        </div>
         {this.props.viewNewAlbumForm ? (
           <NewAlbumForm
             clearNewAlbumForm={this.props.clearNewAlbumForm}
             refreshMyAlbums={this.props.refreshMyAlbums}
           />
         ) : null}
+        
+        <Container textAlign="center" >
         <Card.Group className="App-container">
           {this.props.myAlbums.map(album => (
             <AlbumCard
@@ -39,6 +43,8 @@ class AlbumsContainer extends Component {
             />
           ))}
         </Card.Group>
+        </Container>
+      
         {this.props.chosenAlbum ? (
           <AlbumContent  chosenAlbum={this.state.chosenAlbum}/>
         ) : null}

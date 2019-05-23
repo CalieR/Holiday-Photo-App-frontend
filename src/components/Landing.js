@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container } from "semantic-ui-react";
+import { Grid, Container, Header, Form, Button } from "semantic-ui-react";
 
 class Landing extends Component {
   state = {
@@ -13,27 +13,30 @@ class Landing extends Component {
   renderLogin = () => {
     if (this.state.choice === "login") {
       return (
-        <form>
-          <label>Login Form:</label>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="username"
-              type="text"
-              name="username"
-            />
-            <label htmlFor="password">Password:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="password"
-              type="text"
-              name="password"
-            />
-          </div>
+        <Grid centered>
+          <Form className="login-signup">
+            <Form.Field>
+              <input
+                onChange={this.props.handleChange}
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Username"
+              />
+            </Form.Field>
+            <Form.Field>
+              <input
+                onChange={this.props.handleChange}
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </Form.Field>
 
-          <button onClick={this.props.onLoginClicked}>submit</button>
-        </form>
+            <Button onClick={this.props.onLoginClicked}>Log In</Button>
+          </Form>
+        </Grid>
       );
     }
   };
@@ -45,39 +48,43 @@ class Landing extends Component {
   renderSignUp = () => {
     if (this.state.choice === "signup") {
       return (
-        <form>
-          <label>Signup Form:</label>
-          <p>Choose a username (must be unique) and password</p>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="username"
-              type="text"
-              name="username"
-            />
-            <label htmlFor="password">Password:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="password"
-              type="text"
-              name="password"
-            />
-          </div>
+        <Grid centered>
+          <Form className="login-signup">
+            <Form.Field>
+              <h3>Choose a username and password</h3>
+              <p>(Your username must be unique)</p>
 
-          <button onClick={this.props.onSignupClicked}>submit</button>
-        </form>
+              <input
+                onChange={this.props.handleChange}
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Username"
+              />
+            </Form.Field>
+            <Form.Field>
+              <input
+                onChange={this.props.handleChange}
+                id="password"
+                type="text"
+                name="password"
+                placeholder="Password"
+              />
+            </Form.Field>
+            <Button onClick={this.props.onSignupClicked}>Sign Up</Button>
+          </Form>
+        </Grid>
       );
     }
   };
 
   render() {
     return (
-      <Container>
-        <h1>Welcome to Picshare</h1>
-        <h3>Please log in or sign up</h3>
-        <button onClick={this.viewLogin}>Log in</button>
-        <button onClick={this.viewSignup}>Sign up</button>
+      <Container className="welcome">
+        <Header size="huge">Welcome to Picshare</Header>
+
+        <Button onClick={this.viewLogin}>Log in</Button>
+        <Button onClick={this.viewSignup}>Sign up</Button>
 
         {this.renderSignUp()}
         {this.renderLogin()}
