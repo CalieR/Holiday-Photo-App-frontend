@@ -39,7 +39,6 @@ class PhotoUploader extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // if in here to make sure the title and description are not blank
     api.newPhoto(
       this.state.uploadedFileCloudinaryUrl,
       this.state.title,
@@ -62,7 +61,6 @@ class PhotoUploader extends Component {
   // superagent will post to cloudinary:
   // . field method allows data to be attached to request
   handleImageUpload = file => {
-    // debugger;
     let upload = request
       .post(CLOUDINARY_UPLOAD_URL)
       .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
@@ -104,18 +102,15 @@ class PhotoUploader extends Component {
 
         <div>
           {this.state.uploadedFileCloudinaryUrl === "" ? null : (
-            <div>
+            <>
+            <div className="uploaded-image-preview">
               <p>{this.state.uploadedFile.name}</p>
               <img
                 src={this.state.uploadedFileCloudinaryUrl}
                 alt="cloudinary url"
               />
             </div>
-          )}
-        </div>
-
-
-        <div className="ui form">
+            <div className="ui form">
           <Form className="ui form" onSubmit={this.handleSubmit}>
             <Label size="large">Give your new image a title</Label>
 
@@ -145,6 +140,12 @@ class PhotoUploader extends Component {
             </Form.Group>
           </Form>
         </div>
+        </>
+          )}
+        </div>
+
+
+      
       </Container>
     );
   }

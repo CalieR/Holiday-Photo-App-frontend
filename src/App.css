@@ -29,7 +29,15 @@
   
 }
 
+.albums-control {
+  border: 2px solid blue;
+  
+}
 
+.main-body {
+  width: 80%;
+  margin: auto;
+}
 
 
 
