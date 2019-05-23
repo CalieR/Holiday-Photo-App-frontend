@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import AlbumCard from "./AlbumCard";
 import AlbumContent from "./AlbumContent";
-import { Card } from "semantic-ui-react";
+import { Button, Card } from "semantic-ui-react";
 import NewAlbumForm from "./NewAlbumForm";
 // import api from "../util/api";
 
@@ -12,14 +12,28 @@ class AlbumsContainer extends Component {
     clickedAlbum: ""
   };
 
+  returnToAlbumsView = () => {
+    this.setState({
+      clickedAlbum: ""
+    });
+  };
+
   render() {
     return (
       <>
         <h4>Your albums (click one to view contents):</h4>
-        <button onClick={this.props.handleNewAlbumClick}>
-          Create a new album
-        </button>
-        {this.props.viewNewAlbumForm ? <NewAlbumForm clearNewAlbumForm={this.props.clearNewAlbumForm}  refreshMyAlbums={this.props.refreshMyAlbums}/> : null}
+        <Button
+          content="Create a new album"
+          icon="add"
+          labelPosition="left"
+          onClick={this.props.handleNewAlbumClick}
+        />
+        {this.props.viewNewAlbumForm ? (
+          <NewAlbumForm
+            clearNewAlbumForm={this.props.clearNewAlbumForm}
+            refreshMyAlbums={this.props.refreshMyAlbums}
+          />
+        ) : null}
         <Card.Group className="App-container">
           {this.props.myAlbums.map(album => (
             <AlbumCard
@@ -29,7 +43,9 @@ class AlbumsContainer extends Component {
             />
           ))}
         </Card.Group>
-        {this.state.clickedAlbum ? <AlbumContent /> : null}
+        {this.state.clickedAlbum ? (
+          <AlbumContent returnToAlbumsView={this.returnToAlbumsView} />
+        ) : null}
       </>
     );
   }

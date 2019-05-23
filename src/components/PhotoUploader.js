@@ -37,8 +37,7 @@ class PhotoUploader extends Component {
     });
   };
 
-
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     api.newPhoto(
       this.state.uploadedFileCloudinaryUrl,
@@ -46,8 +45,8 @@ class PhotoUploader extends Component {
       this.state.description,
       this.props.chosenAlbum.id
     );
-   this.resetState()
-   this.props.hideUpload()
+    this.resetState();
+    this.props.hideUpload();
   };
 
   resetState = () => {
@@ -56,8 +55,8 @@ class PhotoUploader extends Component {
       uploadedFile: null,
       title: "",
       description: ""
-    })
-  }
+    });
+  };
 
   // superagent will post to cloudinary:
   // . field method allows data to be attached to request
@@ -91,7 +90,6 @@ class PhotoUploader extends Component {
                   <input {...getInputProps()} />
                   {
                     <>
-                      <p>Upload a new photo to this album:</p>
                       <p>
                         Drop a file here, or click to select a file to upload.
                       </p>

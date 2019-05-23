@@ -22,7 +22,7 @@ class AlbumCard extends Component {
         </Card.Content>
         <Card.Content extra>
           <Icon name="picture" />
-          22 photos
+         {this.props.album.photos.length} photos
         </Card.Content>
       </Card>
     );
