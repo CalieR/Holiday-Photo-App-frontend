@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Container, Form, Button } from "semantic-ui-react";
+import { Grid, Container, Header, Form, Button } from "semantic-ui-react";
 
 class Landing extends Component {
   state = {
@@ -13,31 +13,29 @@ class Landing extends Component {
   renderLogin = () => {
     if (this.state.choice === "login") {
       return (
-        <Grid centered >
-        <Form>
-          <Form.Field>
-            <label>Login Form:</label>
+        <Grid centered>
+          <Form className="login-signup">
+            <Form.Field>
+              <input
+                onChange={this.props.handleChange}
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Username"
+              />
+            </Form.Field>
+            <Form.Field>
+              <input
+                onChange={this.props.handleChange}
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </Form.Field>
 
-            <label htmlFor="username">Username:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="username"
-              type="text"
-              name="username"
-            />
-          </Form.Field>
-          <Form.Field>
-            <label htmlFor="password">Password:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="password"
-              type="text"
-              name="password"
-            />
-          </Form.Field>
-
-          <Button onClick={this.props.onLoginClicked}>Submit</Button>
-        </Form>
+            <Button onClick={this.props.onLoginClicked}>Log In</Button>
+          </Form>
         </Grid>
       );
     }
@@ -51,30 +49,30 @@ class Landing extends Component {
     if (this.state.choice === "signup") {
       return (
         <Grid centered>
-        <Form>
-          <Form.Field>
-            <label>Signup Form:</label>
-            <p>Choose a username (must be unique) and password</p>
+          <Form className="login-signup">
+            <Form.Field>
+              <h3>Choose a username and password</h3>
+              <p>(Your username must be unique)</p>
 
-            <label htmlFor="username">Username:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="username"
-              type="text"
-              name="username"
-            />
-          </Form.Field>
-          <Form.Field>
-            <label htmlFor="password">Password:</label>
-            <input
-              onChange={this.props.handleChange}
-              id="password"
-              type="text"
-              name="password"
-            />
-          </Form.Field>
-          <Button onClick={this.props.onSignupClicked}>Submit</Button>
-        </Form>
+              <input
+                onChange={this.props.handleChange}
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Username"
+              />
+            </Form.Field>
+            <Form.Field>
+              <input
+                onChange={this.props.handleChange}
+                id="password"
+                type="text"
+                name="password"
+                placeholder="Password"
+              />
+            </Form.Field>
+            <Button onClick={this.props.onSignupClicked}>Sign Up</Button>
+          </Form>
         </Grid>
       );
     }
@@ -82,9 +80,9 @@ class Landing extends Component {
 
   render() {
     return (
-      <Container>
-        <h1>Welcome to Picshare</h1>
-        <h3>Please log in or sign up</h3>
+      <Container className="welcome">
+        <Header size="huge">Welcome to Picshare</Header>
+
         <Button onClick={this.viewLogin}>Log in</Button>
         <Button onClick={this.viewSignup}>Sign up</Button>
 

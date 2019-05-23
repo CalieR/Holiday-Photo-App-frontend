@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Label } from "semantic-ui-react";
+import { Form, Label, Button } from "semantic-ui-react";
 import api from "../util/api";
 
 class NewAlbumForm extends Component {
@@ -38,11 +38,8 @@ class NewAlbumForm extends Component {
             value={this.state.newAlbumName}
             onChange={this.handleChange}
           />
-          <Form.Button
-            content="Cancel"
-            onClick={this.props.clearNewAlbumForm}
-          />
-          <Form.Button content="Submit" />
+          <Button onClick={this.props.clearNewAlbumForm}>Cancel</Button>
+          <Button onClick={this.handleSubmit}>Submit</Button>
         </Form>
       </div>
     );

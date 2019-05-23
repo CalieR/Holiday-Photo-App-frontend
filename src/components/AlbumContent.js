@@ -9,7 +9,8 @@ class AlbumContent extends Component {
   state = {
     photos: [],
     showShare: false,
-    showUpload: false
+    showUpload: false,
+    showPhotos: true
   };
 
   componentDidMount() {
@@ -46,12 +47,12 @@ class AlbumContent extends Component {
     this.setState({
       showShare: true
     });
-    
   };
 
   handleUploadClick = () => {
     this.setState({
-      showUpload: true
+      showUpload: true,
+      showPhotos: false
     });
     console.log(this.props.chosenAlbum);
   };
@@ -59,6 +60,19 @@ class AlbumContent extends Component {
   hideUpload = () => {
     this.setState({
       showUpload: false
+    });
+  };
+
+  // hide the photos when the dropzone is rendered
+  hidePhotos = () => {
+    this.setState({
+      showPhotos: false
+    });
+  };
+
+  showPhotos = () => {
+    this.setState({
+      showPhotos: true
     });
   };
 
@@ -74,21 +88,27 @@ class AlbumContent extends Component {
           labelPosition="left"
           onClick={this.props.resetAlbumChoice}
         />
-        {this.state.showShare === true ? (
-          <Invitation chosenAlbum={this.props.chosenAlbum} />
-        ) : null}
-
-        <PhotosContainer photos={this.state.photos} />
         <Button
           content="Upload a photo to this album"
           icon="add"
           labelPosition="left"
           onClick={this.handleUploadClick}
         />
+        <h3>{this.state.photos.length} Photos in this album:</h3>
+        {this.state.showShare === true ? (
+          <Invitation chosenAlbum={this.props.chosenAlbum} />
+        ) : null}
+
+        {this.state.showPhotos ? (
+          <PhotosContainer photos={this.state.photos} />
+        ) : null}
+
         {this.state.showUpload ? (
           <PhotoUploader
             hideUpload={this.hideUpload}
             chosenAlbum={this.props.chosenAlbum}
+            getAlbum={this.getAlbum}
+            showPhotos={this.showPhotos}
           />
         ) : null}
       </div>
