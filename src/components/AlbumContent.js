@@ -16,23 +16,23 @@ class AlbumContent extends Component {
     this.getAlbum(this.props.chosenAlbum.id);
   }
 
-  getMockAlbum = albumId => {
-    Promise.resolve({
-      id: 1,
-      name: "Photos",
-      photos: [
-        {
-          created_at: "2019-05-16T14:51:54.404Z",
-          description: "a lovely cute doggy",
-          id: 1,
-          image_url: "http://placecorgi.com/260/180",
-          title: "a cute doggy",
-          updated_at: "2019-05-16T14:51:54.404Z",
-          user_id: 1
-        }
-      ]
-    });
-  };
+  // getMockAlbum = albumId => {
+  //   Promise.resolve({
+  //     id: 1,
+  //     name: "Photos",
+  //     photos: [
+  //       {
+  //         created_at: "2019-05-16T14:51:54.404Z",
+  //         description: "a lovely cute doggy",
+  //         id: 1,
+  //         image_url: "http://placecorgi.com/260/180",
+  //         title: "a cute doggy",
+  //         updated_at: "2019-05-16T14:51:54.404Z",
+  //         user_id: 1
+  //       }
+  //     ]
+  //   });
+  // };
 
   getAlbum = albumId => {
     api.getAlbum(albumId).then(data => {
@@ -42,12 +42,11 @@ class AlbumContent extends Component {
     });
   };
 
-  handleShareClick = e => {
+  handleShareClick = () => {
     this.setState({
       showShare: true
     });
-    console.log(e);
-    console.log(this.state.showShare);
+    
   };
 
   handleUploadClick = () => {
@@ -66,14 +65,14 @@ class AlbumContent extends Component {
   render() {
     return (
       <div>
-        <Button onClick={() => this.handleShareClick()}>
+        <Button color="black" onClick={() => this.handleShareClick()}>
           Share this album with another user
         </Button>
         <Button
-          content="Back to my albums - NOT WORKING"
+          content="Back to my albums"
           icon="left arrow"
           labelPosition="left"
-          onClick={this.props.returnToAlbumsView}
+          onClick={this.props.resetAlbumChoice}
         />
         {this.state.showShare === true ? (
           <Invitation chosenAlbum={this.props.chosenAlbum} />

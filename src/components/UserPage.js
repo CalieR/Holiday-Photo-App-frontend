@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AlbumsContainer from "./AlbumsContainer";
 import api from "../util/api";
 import AlbumContent from "./AlbumContent";
-import NavBar from './NavBar'
+import NavBar from "./NavBar";
 
 class UserPage extends Component {
   state = {
@@ -52,12 +52,21 @@ class UserPage extends Component {
     });
   };
 
+  resetAlbumChoice = () => {
+    this.setState({
+      chosenAlbum: null
+    });
+  };
+
   render() {
     return (
       <>
-       <NavBar username={this.props.username} handleLogOut={this.props.handleLogOut}/>
+        <NavBar
+          username={this.props.username}
+          handleLogOut={this.props.handleLogOut}
+        />
         {this.state.chosenAlbum ? (
-          <AlbumContent chosenAlbum={this.state.chosenAlbum} />
+          <AlbumContent chosenAlbum={this.state.chosenAlbum} resetAlbumChoice={this.resetAlbumChoice}/>
         ) : (
           <AlbumsContainer
             myAlbums={this.state.myAlbums}
@@ -66,6 +75,7 @@ class UserPage extends Component {
             refreshMyAlbums={this.refreshMyAlbums}
             handleNewAlbumClick={this.handleNewAlbumClick}
             handleAlbumChoiceClick={this.handleAlbumChoiceClick}
+           
           />
         )}
       </>
@@ -74,5 +84,3 @@ class UserPage extends Component {
 }
 
 export default UserPage;
-
-

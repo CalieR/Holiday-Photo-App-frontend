@@ -9,14 +9,10 @@ import NewAlbumForm from "./NewAlbumForm";
 
 class AlbumsContainer extends Component {
   state = {
-    clickedAlbum: ""
+    
   };
 
-  returnToAlbumsView = () => {
-    this.setState({
-      clickedAlbum: ""
-    });
-  };
+ 
 
   render() {
     return (
@@ -43,8 +39,8 @@ class AlbumsContainer extends Component {
             />
           ))}
         </Card.Group>
-        {this.state.clickedAlbum ? (
-          <AlbumContent returnToAlbumsView={this.returnToAlbumsView} />
+        {this.props.chosenAlbum ? (
+          <AlbumContent  chosenAlbum={this.state.chosenAlbum}/>
         ) : null}
       </>
     );

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import api from "../util/api";
-import { Form, Label, Container } from "semantic-ui-react";
+import { Form, Label, Container, Segment } from "semantic-ui-react";
 
 const CLOUDINARY_UPLOAD_PRESET = "wc5u6xxi";
 const CLOUDINARY_UPLOAD_URL =
@@ -39,6 +39,7 @@ class PhotoUploader extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    // if in here to make sure the title and description are not blank
     api.newPhoto(
       this.state.uploadedFileCloudinaryUrl,
       this.state.title,
@@ -89,11 +90,11 @@ class PhotoUploader extends Component {
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
                   {
-                    <>
+                    <Segment size="massive">
                       <p>
                         Drop a file here, or click to select a file to upload.
                       </p>
-                    </>
+                    </Segment>
                   }
                 </div>
               );
@@ -113,13 +114,13 @@ class PhotoUploader extends Component {
           )}
         </div>
 
+
         <div className="ui form">
           <Form className="ui form" onSubmit={this.handleSubmit}>
-            <Label size="massive" pointing="below">
-              Give your new image a title
-            </Label>
+            <Label size="large">Give your new image a title</Label>
 
             <Form.Input
+              required
               className="field"
               type="text"
               placeholder="Image title"
@@ -127,11 +128,10 @@ class PhotoUploader extends Component {
               value={this.state.title}
               onChange={this.handleChange}
             />
-            <Label size="massive" pointing="below">
-              Give your new image a description:
-            </Label>
+            <Label size="large">Give your new image a description:</Label>
 
             <Form.Input
+              required
               className="field"
               type="text"
               placeholder="Image description"
@@ -139,8 +139,10 @@ class PhotoUploader extends Component {
               value={this.state.descripton}
               onChange={this.handleChange}
             />
-            <button onClick={this.props.hideUpload}>Cancel</button>
-            <Form.Button className="fluid" content="Submit" />
+            <Form.Group inline>
+              <Form.Button content="Cancel" onClick={this.props.hideUpload} />
+              <Form.Button className="fluid" content="Submit" />
+            </Form.Group>
           </Form>
         </div>
       </Container>
