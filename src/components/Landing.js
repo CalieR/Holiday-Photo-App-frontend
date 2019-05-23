@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Container } from "semantic-ui-react";
 
 class Landing extends Component {
   state = {
@@ -31,9 +31,8 @@ class Landing extends Component {
               name="password"
             />
           </div>
-        
-            <button onClick={this.props.onLoginClicked}>submit</button>
-         
+
+          <button onClick={this.props.onLoginClicked}>submit</button>
         </form>
       );
     }
@@ -65,9 +64,8 @@ class Landing extends Component {
               name="password"
             />
           </div>
-         
-            <button onClick={this.props.onSignupClicked}>submit</button>
-         
+
+          <button onClick={this.props.onSignupClicked}>submit</button>
         </form>
       );
     }
@@ -75,15 +73,15 @@ class Landing extends Component {
 
   render() {
     return (
-      <>
-        <h1>Welcome to Holiday Photo App!</h1>
+      <Container>
+        <h1>Welcome to Picshare</h1>
         <h3>Please log in or sign up</h3>
         <button onClick={this.viewLogin}>Log in</button>
         <button onClick={this.viewSignup}>Sign up</button>
 
         {this.renderSignUp()}
         {this.renderLogin()}
-      </>
+      </Container>
     );
   }
 }

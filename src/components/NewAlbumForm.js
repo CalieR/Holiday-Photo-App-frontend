@@ -24,19 +24,13 @@ class NewAlbumForm extends Component {
     this.props.clearNewAlbumForm();
   };
 
-
-
   render() {
-    console.log(this.props);
-
     return (
       <div className="ui form">
         <Form className="ui form" onSubmit={this.handleSubmit}>
-          <Label size="massive" pointing="below">
-            Give your new album a name
-          </Label>
-
+          <Label size="large">Give your new album a name</Label>
           <Form.Input
+            required
             className="field"
             type="text"
             placeholder="Album name"
@@ -44,8 +38,11 @@ class NewAlbumForm extends Component {
             value={this.state.newAlbumName}
             onChange={this.handleChange}
           />
-          <button onClick={this.props.clearNewAlbumForm} >Cancel</button>
-          <Form.Button className="fluid" content="Submit" />
+          <Form.Button
+            content="Cancel"
+            onClick={this.props.clearNewAlbumForm}
+          />
+          <Form.Button content="Submit" />
         </Form>
       </div>
     );

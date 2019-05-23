@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("./images/erol-ahmed-536447-unsplash.jpg"); */
+  background-image: url("./images/lubomirkin-690549-unsplash.jpg");
+  /* background-image: url("./images/mockaroon-773721-unsplash.jpg") */
 }
 
 code {

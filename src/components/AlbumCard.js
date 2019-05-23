@@ -7,22 +7,24 @@ import album_icon from "../images/album_icon.png";
 class AlbumCard extends Component {
   state = {};
 
-
   render() {
     return (
       <Card>
-        <Image src={album_icon}  wrapped ui={false} />
+        <Image src={album_icon} wrapped ui={false} />
         <Card.Content>
-          <Card.Header
-            id={this.props.album.id}
-           
-          >
-           <Card.Header onClick={() => this.props.handleAlbumChoiceClick(this.props.album)}>{this.props.album.name}</Card.Header>
+          <Card.Header id={this.props.album.id}>
+            <Card.Header
+              onClick={() =>
+                this.props.handleAlbumChoiceClick(this.props.album)
+              }
+            >
+              {this.props.album.name}
+            </Card.Header>
           </Card.Header>
         </Card.Content>
         <Card.Content extra>
           <Icon name="picture" />
-          22 photos
+          {this.props.album.photos.length} photos
         </Card.Content>
       </Card>
     );

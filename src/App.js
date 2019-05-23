@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+
 import React, { Component } from "react";
 import "./App.css";
 import Landing from "./components/Landing";
@@ -70,18 +70,10 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.logged_in ? (
-          <>
-            <Route
-              path="/profile"
-              render={() => (
-                <UserPage
-                  handleLogOut={this.handleLogOut}
-                  username={this.state.username}
-                />
-              )}
-            />
-            <Route path="/testing" render={() => <div>I worked</div>} />
-          </>
+          <UserPage
+            handleLogOut={this.handleLogOut}
+            username={this.state.username}
+          />
         ) : (
           <Landing
             logged_in={this.state.logged_in}
