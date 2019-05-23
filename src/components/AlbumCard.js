@@ -1,25 +1,19 @@
 import React, { Component } from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
-import album_icon from "../images/album_icon.png";
-
-// import api from "../util/api";
+import { Card, Icon, Divider } from "semantic-ui-react";
 
 class AlbumCard extends Component {
   state = {};
 
   render() {
     return (
-      <Card>
-        <Image src={album_icon} wrapped ui={false} />
+      <Card onClick={() => this.props.handleAlbumChoiceClick(this.props.album)}>
         <Card.Content>
+          <Card.Header>
+            <Icon name="object group outline" size="massive" />
+          </Card.Header>
+          <Divider />
           <Card.Header id={this.props.album.id}>
-            <Card.Header
-              onClick={() =>
-                this.props.handleAlbumChoiceClick(this.props.album)
-              }
-            >
-              {this.props.album.name}
-            </Card.Header>
+            <Card.Header>{this.props.album.name}</Card.Header>
           </Card.Header>
         </Card.Content>
         <Card.Content extra>

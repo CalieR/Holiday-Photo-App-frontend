@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import AlbumCard from "./AlbumCard";
 import AlbumContent from "./AlbumContent";
-import { Header, Container, Button, Card } from "semantic-ui-react";
+import { Container, Button, Card } from "semantic-ui-react";
 import NewAlbumForm from "./NewAlbumForm";
 
 
@@ -18,7 +18,7 @@ class AlbumsContainer extends Component {
     return (
       <>
       <div className="albums-control">
-        <Header as="h1" block >Your albums (click one to view contents):</Header>
+        <h1>YOUR ALBUMS:</h1>
         <Button
           content="Create a new album"
           icon="add"
