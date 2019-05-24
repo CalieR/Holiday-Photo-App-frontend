@@ -51,6 +51,7 @@
 .new-album-container {
   margin-bottom: 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -69,6 +70,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.new-pic-details {
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid brown;
 }
 
 .main-body {

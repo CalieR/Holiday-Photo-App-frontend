@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import api from "../util/api";
-import { Form, Label, Segment, Icon, Button } from "semantic-ui-react";
+import { Form, Segment, Icon, Button, Header } from "semantic-ui-react";
 
 const CLOUDINARY_UPLOAD_PRESET = "wc5u6xxi";
 const CLOUDINARY_UPLOAD_URL =
@@ -53,8 +53,9 @@ class PhotoUploader extends Component {
     });
     this.props.hideUpload();
     // this is only working on click not return key
+
     this.props.getAlbum(this.props.chosenAlbum.id);
-    this.props.showPhotos();
+    // this.props.showPhotos();
   };
 
   // superagent will post to cloudinary:
@@ -81,7 +82,12 @@ class PhotoUploader extends Component {
     return (
       <div>
         <div className="dropzone">
-          <Button onClick={this.props.hideUpload}>Cancel</Button>
+          <Button
+            content="Back to photos"
+            icon="left arrow"
+            labelPosition="left"
+            onClick={this.props.hideUpload}
+          />
           <Dropzone onDrop={this.onImageDrop} accept="image/*" multiple={false}>
             {({ getRootProps, getInputProps }) => {
               return (
@@ -112,10 +118,11 @@ class PhotoUploader extends Component {
                   alt="cloudinary url"
                 />
               </div>
-              <div className="ui form">
-                <Form className="ui form">
-                  <Label size="large">Give your new image a title</Label>
-
+             
+        <div className="ui form new-pic-details">
+                <Form className="ui form ">
+                 
+                <Header >Please give your new image a title and description:</Header>
                   <Form.Input
                     required
                     className="field"
@@ -125,7 +132,7 @@ class PhotoUploader extends Component {
                     value={this.state.title}
                     onChange={this.handleChange}
                   />
-                  <Label size="large">Give your new image a description:</Label>
+                  
 
                   <Form.Input
                     required
@@ -138,16 +145,19 @@ class PhotoUploader extends Component {
                   />
                   <Form.Group inline>
                     <Button onClick={this.handleSubmit}>Submit</Button>
-                    <Button onClick={this.props.hideUpload}>Cancel</Button>
                   </Form.Group>
                 </Form>
               </div>
             </>
           )}
         </div>
+
+
       </div>
     );
   }
 }
+
+
 
 export default PhotoUploader;
