@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Dropdown } from "semantic-ui-react";
 import api from "../util/api";
 
 class Invitation extends Component {
   state = {
     users: [],
-    selectedUser: "",
+    selectedUserId: 0,
     admin: false
   };
 
-  // need to code this to take current album id
   componentDidMount() {
     api.inviteUsers(this.state.admin, this.props.chosenAlbum.id).then(data => {
       let usersFromAPI = data.map(user => {
-        return { value: user.id, display: user.username };
+        return { key: user.id, value: user.id, text: user.username };
       });
       this.setState({
         users: usersFromAPI
@@ -21,32 +20,39 @@ class Invitation extends Component {
     });
   }
 
-  handleClick = e => {
-    e.preventDefault();
+  handleChange = data => {
+    const { value } = data;
+    const { key } = data.options.find(o => o.value === value);
+    this.setState({
+      selectedUserId: key
+    });
+  };
+
+  handleClick = () => {
     api.addUserToAlbum(
-      parseInt(this.state.selectedUser, 10),
+      this.state.selectedUserId,
       this.props.chosenAlbum.id,
       this.state.admin
     );
+    const updatedUserList = this.state.users.filter(
+      u => u.key !== this.state.selectedUser
+    );
     this.setState({
-      selectedUser: ""
+      selectedUser: "",
+      users: updatedUserList
     });
   };
 
   render() {
     return (
-      <div>
-        <p>Select a user to add:</p>
-        <select
-          value={this.state.selectedUser}
-          onChange={e => this.setState({ selectedUser: e.target.value })}
-        >
-          {this.state.users.map(user => (
-            <option key={user.value} value={user.value}>
-              {user.display}
-            </option>
-          ))}
-        </select>
+      <div className="invitation-container">
+        <Dropdown
+          selection
+          options={this.state.users}
+          onChange={this.handleChange}
+          name="select friend"
+          placeholder="select friend"
+        />
         <Button onClick={this.handleClick}>Add user</Button>
       </div>
     );

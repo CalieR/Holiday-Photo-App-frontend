@@ -47,7 +47,7 @@ class App extends Component {
     // then api.login - duplication!
     // refactor, pass route endpoint
     api.signup(this.state.username, this.state.password).then(data => {
-      console.log(data);
+      // console.log(data);
       if (data.error) {
         alert("There is already a user with that name.  Please select another username");
       } else {

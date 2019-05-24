@@ -37,6 +37,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  
   /* border: 5px solid red; */
   
 }
@@ -45,6 +46,17 @@
   /* border: 2px solid blue; */
   margin-bottom: 2rem;
   
+}
+
+.new-album-container {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invitation-container {
+  margin: 2rem;
 }
 
 .photo-uploader-container {
