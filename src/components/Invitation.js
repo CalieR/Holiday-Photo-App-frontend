@@ -20,7 +20,7 @@ class Invitation extends Component {
     });
   }
 
-  handleChange = data => {
+  handleChange = (e, data) => {
     const { value } = data;
     const { key } = data.options.find(o => o.value === value);
     this.setState({
@@ -34,11 +34,12 @@ class Invitation extends Component {
       this.props.chosenAlbum.id,
       this.state.admin
     );
+
     const updatedUserList = this.state.users.filter(
-      u => u.key !== this.state.selectedUser
+      u => u.key !== this.state.selectedUserId
     );
     this.setState({
-      selectedUser: "",
+      selectedUserId: 0,
       users: updatedUserList
     });
   };

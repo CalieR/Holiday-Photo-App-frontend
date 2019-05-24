@@ -22,6 +22,7 @@ class Landing extends Component {
                 type="text"
                 name="username"
                 placeholder="Username"
+                required
               />
             </Form.Field>
             <Form.Field>
@@ -31,6 +32,7 @@ class Landing extends Component {
                 type="password"
                 name="password"
                 placeholder="Password"
+                required
               />
             </Form.Field>
 
@@ -60,15 +62,17 @@ class Landing extends Component {
                 type="text"
                 name="username"
                 placeholder="Username"
+                required
               />
             </Form.Field>
             <Form.Field>
               <input
                 onChange={this.props.handleChange}
                 id="password"
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Password"
+                required
               />
             </Form.Field>
             <Button onClick={this.props.onSignupClicked}>Sign Up</Button>

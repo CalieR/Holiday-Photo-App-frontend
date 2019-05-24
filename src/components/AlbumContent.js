@@ -43,9 +43,15 @@ class AlbumContent extends Component {
     });
   };
 
-  handleShareClick = () => {
+  showShare = () => {
     this.setState({
       showShare: true
+    });
+  };
+
+  hideShare = () => {
+    this.setState({
+      showShare: false
     });
   };
 
@@ -81,7 +87,7 @@ class AlbumContent extends Component {
   render() {
     return (
       <div>
-        <Button color="black" onClick={() => this.handleShareClick()}>
+        <Button color="black" onClick={() => this.showShare()} >
           Share this album with another user
         </Button>
         <Button
@@ -106,7 +112,7 @@ class AlbumContent extends Component {
         )}
 
         {this.state.showShare === true ? (
-          <Invitation chosenAlbum={this.props.chosenAlbum} />
+          <Invitation chosenAlbum={this.props.chosenAlbum} hideShare={this.state.hideShare}/>
         ) : null}
 
         {this.state.showPhotos ? (
