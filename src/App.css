@@ -85,7 +85,15 @@
   margin: auto;
 }
 
+.modal-overlay {
+  width: 90%;
+	height: 80%;
+}
 
+.modal-img {
+  width: 100%;
+	height: 100%;
+}
 
 @keyframes App-logo-spin {
   from {
