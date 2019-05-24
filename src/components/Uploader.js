@@ -19,7 +19,7 @@ class Uploader extends Component {
   onPhotoSubmit = e => {
     e.preventDefault();
     api.newPhoto(this.state.imageUrl, this.state.title, this.state.description);
-    // then clear the form
+
     // then reset the state
   };
 

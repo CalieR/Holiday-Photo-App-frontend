@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Input } from "semantic-ui-react";
 import api from "../util/api";
 
 class NewAlbumForm extends Component {
@@ -15,21 +15,24 @@ class NewAlbumForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    api.newAlbum(this.state.newAlbumName).then(data => {
-      this.props.refreshMyAlbums(data);
-    });
-    this.setState({
-      newAlbumName: ""
-    });
-    this.props.clearNewAlbumForm();
+    if (this.state.newAlbumName !== "") {
+      api.newAlbum(this.state.newAlbumName).then(data => {
+        this.props.refreshMyAlbums(data);
+      });
+      this.setState({
+        newAlbumName: ""
+      });
+      this.props.clearNewAlbumForm();
+    } else {
+      alert("Album title cannot be empty");
+    }
   };
 
   render() {
     return (
       <div className="ui form new-album-container">
         <Form className="ui form" onSubmit={this.handleSubmit}>
-          
-          <Form.Input
+          <Input
             required
             className="album-name field"
             type="text"

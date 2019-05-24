@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import api from "../util/api";
-import { Form, Segment, Icon, Button, Header } from "semantic-ui-react";
+import { Form, Segment, Icon, Button, Header, Input } from "semantic-ui-react";
 
 const CLOUDINARY_UPLOAD_PRESET = "wc5u6xxi";
 const CLOUDINARY_UPLOAD_URL =
@@ -38,24 +38,28 @@ class PhotoUploader extends Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
-    api.newPhoto(
-      this.state.uploadedFileCloudinaryUrl,
-      this.state.title,
-      this.state.description,
-      this.props.chosenAlbum.id
-    );
-    this.setState({
-      uploadedFileCloudinaryUrl: "",
-      uploadedFile: null,
-      title: "",
-      description: ""
-    });
-    this.props.hideUpload();
-    // this is only working on click not return key
+    if ((this.state.title !== "") & (this.state.description !== "")) {
+      e.preventDefault();
+      api.newPhoto(
+        this.state.uploadedFileCloudinaryUrl,
+        this.state.title,
+        this.state.description,
+        this.props.chosenAlbum.id
+      );
+      this.setState({
+        uploadedFileCloudinaryUrl: "",
+        uploadedFile: null,
+        title: "",
+        description: ""
+      });
+      this.props.hideUpload();
+      // this is only working on click not return key
 
-    this.props.getAlbum(this.props.chosenAlbum.id);
-    // this.props.showPhotos();
+      this.props.getAlbum(this.props.chosenAlbum.id);
+      // this.props.showPhotos();
+    } else {
+      alert("Title and description must both be completed.");
+    }
   };
 
   // superagent will post to cloudinary:
@@ -118,12 +122,13 @@ class PhotoUploader extends Component {
                   alt="cloudinary url"
                 />
               </div>
-             
-        <div className="ui form new-pic-details">
+
+              <div className="ui form new-pic-details">
                 <Form className="ui form ">
-                 
-                <Header >Please give your new image a title and description:</Header>
-                  <Form.Input
+                  <Header>
+                    Please give your new image a title and description:
+                  </Header>
+                  <Input
                     required
                     className="field"
                     type="text"
@@ -132,9 +137,8 @@ class PhotoUploader extends Component {
                     value={this.state.title}
                     onChange={this.handleChange}
                   />
-                  
 
-                  <Form.Input
+                  <Input
                     required
                     className="field"
                     type="text"
@@ -151,13 +155,9 @@ class PhotoUploader extends Component {
             </>
           )}
         </div>
-
-
       </div>
     );
   }
 }
-
-
 
 export default PhotoUploader;
