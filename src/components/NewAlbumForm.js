@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Label, Button } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import api from "../util/api";
 
 class NewAlbumForm extends Component {
@@ -26,14 +26,14 @@ class NewAlbumForm extends Component {
 
   render() {
     return (
-      <div className="ui form">
+      <div className="ui form new-album-container">
         <Form className="ui form" onSubmit={this.handleSubmit}>
-          <Label size="large">Give your new album a name</Label>
+          
           <Form.Input
             required
-            className="field"
+            className="album-name field"
             type="text"
-            placeholder="Album name"
+            placeholder="New album name"
             name="name"
             value={this.state.newAlbumName}
             onChange={this.handleChange}

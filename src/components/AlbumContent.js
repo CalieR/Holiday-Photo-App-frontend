@@ -94,7 +94,11 @@ class AlbumContent extends Component {
           labelPosition="left"
           onClick={this.handleUploadClick}
         />
-        <h3>{this.state.photos.length} Photos in this album:</h3>
+
+
+        {this.state.photos.length === 0 ? <h1>This album is empty!</h1> : <h1>There are {this.state.photos.length} photos in this album so far...</h1>} 
+
+
         {this.state.showShare === true ? (
           <Invitation chosenAlbum={this.props.chosenAlbum} />
         ) : null}
