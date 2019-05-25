@@ -4,7 +4,10 @@ import api from "../util/api";
 
 class NewAlbumForm extends Component {
   state = {
-    newAlbumName: ""
+    newAlbumName: "",
+    error: "",
+    result: "",
+    showResult: false
   };
 
   handleChange = event => {
@@ -13,19 +16,44 @@ class NewAlbumForm extends Component {
     });
   };
 
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.newAlbumName !== "") {
+  //     api.newAlbum(this.state.newAlbumName).then(data => {
+  //       this.props.refreshMyAlbums(data);
+  //     });
+  //     this.setState({
+  //       newAlbumName: ""
+  //     });
+  //     this.props.clearNewAlbumForm();
+  //   } else {
+  //     alert("Album title cannot be empty");
+  //   }
+  // };
+
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.newAlbumName !== "") {
-      api.newAlbum(this.state.newAlbumName).then(data => {
+    api.newAlbum(this.state.newAlbumName).then(data => {
+      if (data.error) {
+        console.log(data.error);
+        this.setState({
+          error: data.error.name[0],
+          result: "That album already exists, please choose another name"
+        });
+      } else {
         this.props.refreshMyAlbums(data);
-      });
-      this.setState({
-        newAlbumName: ""
-      });
-      this.props.clearNewAlbumForm();
-    } else {
-      alert("Album title cannot be empty");
-    }
+        this.setState({
+          newAlbumName: "",
+          result: "Album created!"
+        });
+        this.props.clearNewAlbumForm();
+      }
+    });
+    // success doesn't show yet because refreshMyAlbums triggers a rerender
+    this.setState({
+      showResult: true
+    });
+    // set this back to false when you click off the page or do any other action
   };
 
   render() {
@@ -41,8 +69,9 @@ class NewAlbumForm extends Component {
             value={this.state.newAlbumName}
             onChange={this.handleChange}
           />
-          <Button onClick={this.props.clearNewAlbumForm}>Cancel</Button>
           <Button onClick={this.handleSubmit}>Submit</Button>
+          <Button onClick={this.props.clearNewAlbumForm}>Cancel</Button>
+          {this.state.showResult ? <h3>{this.state.result}</h3> : null}
         </Form>
       </div>
     );
