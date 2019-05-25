@@ -53,8 +53,6 @@ class PhotoUploader extends Component {
         description: ""
       });
       this.props.hideUpload();
-      // this is only working on click not return key
-
       this.props.getAlbum(this.props.chosenAlbum.id);
       // this.props.showPhotos();
     } else {
