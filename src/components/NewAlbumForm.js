@@ -5,9 +5,7 @@ import api from "../util/api";
 class NewAlbumForm extends Component {
   state = {
     newAlbumName: "",
-    error: "",
-    result: "",
-    showResult: false
+    error: ""
   };
 
   handleChange = event => {
@@ -35,25 +33,18 @@ class NewAlbumForm extends Component {
     event.preventDefault();
     api.newAlbum(this.state.newAlbumName).then(data => {
       if (data.error) {
-        console.log(data.error);
+        // console.log(data.error);
         this.setState({
-          error: data.error.name[0],
-          result: "That album already exists, please choose another name"
+          error: data.error
         });
       } else {
         this.props.refreshMyAlbums(data);
         this.setState({
-          newAlbumName: "",
-          result: "Album created!"
+          newAlbumName: ""
         });
         this.props.clearNewAlbumForm();
       }
     });
-    // success doesn't show yet because refreshMyAlbums triggers a rerender
-    this.setState({
-      showResult: true
-    });
-    // set this back to false when you click off the page or do any other action
   };
 
   render() {
@@ -71,7 +62,7 @@ class NewAlbumForm extends Component {
           />
           <Button onClick={this.handleSubmit}>Submit</Button>
           <Button onClick={this.props.clearNewAlbumForm}>Cancel</Button>
-          {this.state.showResult ? <h3>{this.state.result}</h3> : null}
+          {this.state.error !== "" ? <h3>{this.state.error}</h3> : null}
         </Form>
       </div>
     );
