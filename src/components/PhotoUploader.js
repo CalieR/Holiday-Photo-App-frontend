@@ -19,7 +19,8 @@ class PhotoUploader extends Component {
     uploadedFileCloudinaryUrl: "",
     uploadedFile: null,
     title: "",
-    description: ""
+    description: "",
+    error: ""
   };
 
   onImageDrop = files => {
@@ -37,28 +38,28 @@ class PhotoUploader extends Component {
     });
   };
 
-  handleSubmit = e => {
-    if ((this.state.title !== "") & (this.state.description !== "")) {
-      e.preventDefault();
-      api.newPhoto(
-        this.state.uploadedFileCloudinaryUrl,
-        this.state.title,
-        this.state.description,
-        this.props.chosenAlbum.id
-      );
-      this.setState({
-        uploadedFileCloudinaryUrl: "",
-        uploadedFile: null,
-        title: "",
-        description: ""
-      });
-      this.props.hideUpload();
-      this.props.getAlbum(this.props.chosenAlbum.id);
-      // this.props.showPhotos();
-    } else {
-      alert("Title and description must both be completed.");
-    }
-  };
+  // handleSubmit = e => {
+  //   if ((this.state.title !== "") & (this.state.description !== "")) {
+  //     e.preventDefault();
+  //     api.newPhoto(
+  //       this.state.uploadedFileCloudinaryUrl,
+  //       this.state.title,
+  //       this.state.description,
+  //       this.props.chosenAlbum.id
+  //     );
+  //     this.setState({
+  //       uploadedFileCloudinaryUrl: "",
+  //       uploadedFile: null,
+  //       title: "",
+  //       description: ""
+  //     });
+  //     this.props.hideUpload();
+  //     this.props.getAlbum(this.props.chosenAlbum.id);
+  //     // this.props.showPhotos();
+  //   } else {
+  //     alert("Title and description must both be completed.");
+  //   }
+  // };
 
   // superagent will post to cloudinary:
   // . field method allows data to be attached to request
@@ -78,6 +79,34 @@ class PhotoUploader extends Component {
         });
       }
     });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    api
+      .newPhoto(
+        this.state.uploadedFileCloudinaryUrl,
+        this.state.title,
+        this.state.description,
+        this.props.chosenAlbum.id
+      )
+      .then(data => {
+        if (data.error) {
+          this.setState({
+            error: data.error
+          });
+        } else {
+          this.setState({
+            uploadedFileCloudinaryUrl: "",
+            uploadedFile: null,
+            title: "",
+            description: ""
+          });
+          this.props.hideUpload();
+          this.props.getAlbum(this.props.chosenAlbum.id);
+          // this.props.showPhotos();
+        }
+      });
   };
 
   render() {
@@ -147,6 +176,9 @@ class PhotoUploader extends Component {
                   />
                   <Form.Group inline>
                     <Button onClick={this.handleSubmit}>Submit</Button>
+                    {this.state.error !== "" ? (
+                      <h3>{this.state.error}</h3>
+                    ) : null}
                   </Form.Group>
                 </Form>
               </div>

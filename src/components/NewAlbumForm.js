@@ -4,7 +4,8 @@ import api from "../util/api";
 
 class NewAlbumForm extends Component {
   state = {
-    newAlbumName: ""
+    newAlbumName: "",
+    error: ""
   };
 
   handleChange = event => {
@@ -13,19 +14,37 @@ class NewAlbumForm extends Component {
     });
   };
 
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.newAlbumName !== "") {
+  //     api.newAlbum(this.state.newAlbumName).then(data => {
+  //       this.props.refreshMyAlbums(data);
+  //     });
+  //     this.setState({
+  //       newAlbumName: ""
+  //     });
+  //     this.props.clearNewAlbumForm();
+  //   } else {
+  //     alert("Album title cannot be empty");
+  //   }
+  // };
+
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.newAlbumName !== "") {
-      api.newAlbum(this.state.newAlbumName).then(data => {
+    api.newAlbum(this.state.newAlbumName).then(data => {
+      if (data.error) {
+        // console.log(data.error);
+        this.setState({
+          error: data.error
+        });
+      } else {
         this.props.refreshMyAlbums(data);
-      });
-      this.setState({
-        newAlbumName: ""
-      });
-      this.props.clearNewAlbumForm();
-    } else {
-      alert("Album title cannot be empty");
-    }
+        this.setState({
+          newAlbumName: ""
+        });
+        this.props.clearNewAlbumForm();
+      }
+    });
   };
 
   render() {
@@ -41,8 +60,9 @@ class NewAlbumForm extends Component {
             value={this.state.newAlbumName}
             onChange={this.handleChange}
           />
-          <Button onClick={this.props.clearNewAlbumForm}>Cancel</Button>
           <Button onClick={this.handleSubmit}>Submit</Button>
+          <Button onClick={this.props.clearNewAlbumForm}>Cancel</Button>
+          {this.state.error !== "" ? <h3>{this.state.error}</h3> : null}
         </Form>
       </div>
     );

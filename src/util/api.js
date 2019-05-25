@@ -41,6 +41,7 @@ const getUserProfile = () => {
 // create new album, which creates a new albumUser
 // so Auth header with token also has to be passed
 const newAlbum = name => {
+  // debugger;
   return fetch(`${API_BASE_URL}/api/v1/albums`, {
     method: "POST",
     headers: { ...headers, Authorization: localStorage.getItem("token") },
@@ -94,7 +95,6 @@ const newPhoto = (image, title, description, album) => {
     })
   }).then(resp => resp.json());
 };
-
 
 export default {
   login,
