@@ -65,8 +65,8 @@
 }
 
 .dropzone {
-  border:2px solid brown;
-  
+  /* border:2px solid brown; */
+  margin-top: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
