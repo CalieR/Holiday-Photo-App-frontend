@@ -112,20 +112,20 @@ class PhotoUploader extends Component {
   render() {
     return (
       <div>
+        <Button
+          content="Back to photos"
+          icon="left arrow"
+          labelPosition="left"
+          onClick={this.props.hideUpload}
+        />
         <div className="dropzone">
-          <Button
-            content="Back to photos"
-            icon="left arrow"
-            labelPosition="left"
-            onClick={this.props.hideUpload}
-          />
           <Dropzone onDrop={this.onImageDrop} accept="image/*" multiple={false}>
             {({ getRootProps, getInputProps }) => {
               return (
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
                   {
-                    <Segment inverted color="olive" tertiary>
+                    <Segment placeholder textAlign="center" tertiary circular>
                       <h3>
                         Drop a file here, or click to select a file from your
                         computer.
