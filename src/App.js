@@ -69,6 +69,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+     
         {this.state.logged_in ? (
           <UserPage
             handleLogOut={this.handleLogOut}
