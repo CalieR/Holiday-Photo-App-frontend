@@ -5,7 +5,7 @@ class Navbar extends Component {
   state = {};
   render() {
     return (
-      <Segment secondary>
+      <Segment secondary className="nav-header">
         <Menu>
           <Menu.Item>
             <h1>PICSHARE</h1>

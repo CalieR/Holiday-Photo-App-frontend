@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import api from "../util/api";
-import { Form, Segment, Icon, Button, Header, Input } from "semantic-ui-react";
+import { Form, Segment, Icon, Button, Header, Input, TextArea } from "semantic-ui-react";
 
 const CLOUDINARY_UPLOAD_PRESET = "wc5u6xxi";
 const CLOUDINARY_UPLOAD_URL =
@@ -165,11 +165,11 @@ class PhotoUploader extends Component {
                     onChange={this.handleChange}
                   />
 
-                  <Input
+                  <TextArea
                     required
                     className="field"
                     type="text"
-                    placeholder="Image description"
+                    placeholder="Describe this image...who is in the picture, where was it taken?"
                     name="description"
                     value={this.state.descripton}
                     onChange={this.handleChange}
