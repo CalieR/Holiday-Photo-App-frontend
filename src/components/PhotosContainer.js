@@ -15,26 +15,32 @@ class PhotosContainer extends Component {
     });
   };
 
+
+  // only render the switch views element if there are some photos to view:
   render() {
-    return (
-      <>
-        <Button onClick={this.handleClick}>switch views</Button>
-        {this.state.clicked ? (
-          <Slideshow photos={this.props.photos} />
-        ) : (
-          <Card.Group className="App-container">
-            {this.props.photos.map((photo, index) => (
-              <PhotoCard
-                key={photo.id}
-                photoindex={index}
-                photo={photo}
-                photos={this.props.photos}
-              />
-            ))}
-          </Card.Group>
-        )}
-      </>
-    );
+    if (this.props.photos.length !== 0) {
+      return (
+        <>
+          <Button onClick={this.handleClick}>switch views</Button>
+          {this.state.clicked ? (
+            <Slideshow photos={this.props.photos} />
+          ) : (
+            <Card.Group className="App-container">
+              {this.props.photos.map((photo, index) => (
+                <PhotoCard
+                  key={photo.id}
+                  photoindex={index}
+                  photo={photo}
+                  photos={this.props.photos}
+                />
+              ))}
+            </Card.Group>
+          )}
+        </>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
