@@ -66,12 +66,11 @@ class AlbumContent extends Component {
   hideUpload = () => {
     this.setState({
       showUpload: false,
-      showPhotos: true,
-      
+      showPhotos: true
     });
   };
 
-  // hide the photos when the dropzone is rendered 
+  // hide the photos when the dropzone is rendered
   //refactor these two functions into a toggle function
   // hidePhotos = () => {
   //   this.setState({
@@ -88,7 +87,7 @@ class AlbumContent extends Component {
   render() {
     return (
       <div>
-        <Button color="black" onClick={() => this.showShare()} >
+        <Button color="black" onClick={() => this.showShare()}>
           Share this album with another user
         </Button>
         <Button
@@ -113,7 +112,10 @@ class AlbumContent extends Component {
         )}
 
         {this.state.showShare === true ? (
-          <Invitation chosenAlbum={this.props.chosenAlbum} hideShare={this.state.hideShare}/>
+          <Invitation
+            chosenAlbum={this.props.chosenAlbum}
+            hideShare={this.hideShare}
+          />
         ) : null}
 
         {this.state.showPhotos ? (
@@ -125,7 +127,6 @@ class AlbumContent extends Component {
             hideUpload={this.hideUpload}
             chosenAlbum={this.props.chosenAlbum}
             getAlbum={this.getAlbum}
-             
           />
         ) : null}
       </div>

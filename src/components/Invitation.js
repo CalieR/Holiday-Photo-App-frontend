@@ -42,6 +42,7 @@ class Invitation extends Component {
       selectedUserId: 0,
       users: updatedUserList
     });
+    this.props.hideShare();
   };
 
   render() {
@@ -51,6 +52,7 @@ class Invitation extends Component {
           selection
           options={this.state.users}
           onChange={this.handleChange}
+          hideShare={this.props.hideShare}
           name="select friend"
           placeholder="select friend"
         />
