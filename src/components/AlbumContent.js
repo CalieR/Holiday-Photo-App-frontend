@@ -3,14 +3,17 @@ import PhotosContainer from "./PhotosContainer";
 import PhotoUploader from "./PhotoUploader";
 import api from "../util/api";
 import Invitation from "./Invitation";
-import { Button } from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 
 class AlbumContent extends Component {
   state = {
     photos: [],
     showShare: false,
     showUpload: false,
-    showPhotos: true
+    showPhotos: true,
+    creator: "",
+    userCount: 0,
+    users: []
   };
 
   componentDidMount() {
@@ -37,8 +40,12 @@ class AlbumContent extends Component {
 
   getAlbum = albumId => {
     api.getAlbum(albumId).then(data => {
+      console.log(data);
       this.setState({
-        photos: data.photos
+        photos: data.album.photos,
+        creator: data.creator,
+        users: data.album.users,
+        userCount: data.album.users.length
       });
     });
   };
@@ -87,6 +94,17 @@ class AlbumContent extends Component {
   render() {
     return (
       <div>
+        <Modal trigger={<Button>About this album</Button>} closeIcon centered>
+          <Modal.Header>{this.props.chosenAlbum.name}</Modal.Header>
+          <Modal.Content>
+            <h3>This album was created by {this.state.creator}</h3>
+            <h3>There are {this.state.photos.length} photos in this album</h3>
+            <h3>{this.state.userCount} users are sharing this album:</h3>
+            {this.state.users.map(user => (
+              <p key={user.id}>{user.username}</p>
+            ))}
+          </Modal.Content>
+        </Modal>
         <Button color="black" onClick={() => this.showShare()}>
           Share this album with another user
         </Button>
@@ -106,9 +124,7 @@ class AlbumContent extends Component {
         {this.state.photos.length === 0 ? (
           <h1>This album is empty!</h1>
         ) : (
-          <h1>
-            There are {this.state.photos.length} photos in this album so far...
-          </h1>
+          <h1>...</h1>
         )}
 
         {this.state.showShare === true ? (

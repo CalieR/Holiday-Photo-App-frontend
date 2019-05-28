@@ -9,7 +9,8 @@ class UserPage extends Component {
     name: "",
     myAlbums: [],
     viewNewAlbumForm: false,
-    chosenAlbum: null
+    chosenAlbum: null,
+    chosenAlbumCreator: ''
   };
 
   // if there is a token stored,
