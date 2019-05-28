@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.4.5",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.4",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "react-siema": "^1.0.1",
+    "react-simple-modal-slideshow": "^1.0.1",
     "react-test-renderer": "^16.8.6",
     "semantic-ui-react": "^0.87.1",
-    "superagent": "^5.0.5",
-    "@babel/runtime": "^7.4.5"
+    "superagent": "^5.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
