@@ -66,7 +66,8 @@ class AlbumContent extends Component {
   hideUpload = () => {
     this.setState({
       showUpload: false,
-      showPhotos: true
+      showPhotos: true,
+      
     });
   };
 
