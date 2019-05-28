@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Slide from './Slide'
-import { Card, Image, Button, Modal, Icon } from "semantic-ui-react";
+
+import { Card, Image, Button, Modal } from "semantic-ui-react";
 
 // add a modal to this component to expand the image
 // if that works, consider side scrolling for all images in an album
@@ -25,9 +25,8 @@ class PhotoCard extends Component {
           className="modal-overlay"
         >
           <Modal.Header>{this.props.photo.title}</Modal.Header>
-          <Icon name="angle left"/>
           <Modal.Content image>
-            <Slide photo={this.props.photo} photoindex={this.props.photoindex} photos={this.props.photos}/>
+            <Image className="modal-img" src={this.props.photo.image_url} photo={this.props.photo} />
           </Modal.Content>
         </Modal>
       </Card>
