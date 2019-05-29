@@ -21,8 +21,8 @@ class PhotosContainer extends Component {
       return (
         <>
         <div className="view-button">
-          <Button color="teal" onClick={this.handleClick}>
-            switch views
+          <Button basic color="teal" onClick={this.handleClick}>
+            switch view
           </Button>
           </div>
           {this.state.clicked ? (

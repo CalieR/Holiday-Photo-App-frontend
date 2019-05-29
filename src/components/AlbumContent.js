@@ -76,11 +76,9 @@ class AlbumContent extends Component {
     });
   };
 
-
-
   render() {
     return (
-      <div >
+      <div>
         <Modal
           trigger={<Button color="teal">About this album</Button>}
           closeIcon
@@ -88,9 +86,9 @@ class AlbumContent extends Component {
         >
           <Modal.Header>{this.props.chosenAlbum.name}</Modal.Header>
           <Modal.Content>
-            <h3>This album was created by {this.state.creator}</h3>
-            <h3>There are {this.state.photos.length} photos in this album</h3>
-            <h3>{this.state.userCount} users are sharing this album:</h3>
+            <h4>Created by {this.state.creator}</h4>
+            <h4>Contains {this.state.photos.length} photos</h4>
+            <h4>Currently shared by {this.state.userCount} users: </h4>
             {this.state.users.map(user => (
               <p key={user.id}>{user.username}</p>
             ))}
@@ -107,6 +105,7 @@ class AlbumContent extends Component {
           onClick={this.props.resetAlbumChoice}
         />
         <Button
+          
           color="teal"
           content="Upload a photo to this album"
           icon="add"
