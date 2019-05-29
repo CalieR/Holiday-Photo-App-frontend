@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Container, Header, Form, Button } from "semantic-ui-react";
+import { Grid, Container, Header, Form, Button, Icon } from "semantic-ui-react";
 
 class Landing extends Component {
   state = {
@@ -36,7 +36,9 @@ class Landing extends Component {
               />
             </Form.Field>
 
-            <Button onClick={this.props.onLoginClicked}>Log In</Button>
+            <Button color="teal" onClick={this.props.onLoginClicked}>
+              Log In
+            </Button>
           </Form>
         </Grid>
       );
@@ -75,7 +77,9 @@ class Landing extends Component {
                 required
               />
             </Form.Field>
-            <Button onClick={this.props.onSignupClicked}>Sign Up</Button>
+            <Button color="teal" onClick={this.props.onSignupClicked}>
+              Sign Up
+            </Button>
           </Form>
         </Grid>
       );
@@ -85,11 +89,18 @@ class Landing extends Component {
   render() {
     return (
       <Container className="welcome">
-        <Header size="huge">Welcome to Picshare</Header>
-
-        <Button onClick={this.viewLogin}>Log in</Button>
-        <Button onClick={this.viewSignup}>Sign up</Button>
-
+        <Icon name="share square outline" size="huge" />
+        <Header className="welcome-header" size="huge">
+          Welcome to Picshare
+        </Header>
+        <div className="welcome-buttons">
+          <Button color="teal" onClick={this.viewLogin}>
+            Log in
+          </Button>
+          <Button color="teal" onClick={this.viewSignup}>
+            Sign up
+          </Button>
+        </div>
         {this.renderSignUp()}
         {this.renderLogin()}
       </Container>

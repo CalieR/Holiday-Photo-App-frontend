@@ -20,6 +20,7 @@ class AlbumsContainer extends Component {
       <div className="albums-control">
         <h1>YOUR ALBUMS:</h1>
         <Button
+        color="teal"
           content="Create a new album"
           icon="add"
           labelPosition="left"

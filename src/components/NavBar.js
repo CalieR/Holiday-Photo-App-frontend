@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Menu, Button } from "semantic-ui-react";
+import { Segment, Menu, Button, Icon } from "semantic-ui-react";
 
 class Navbar extends Component {
   state = {};
@@ -8,6 +8,7 @@ class Navbar extends Component {
       <Segment secondary className="nav-header">
         <Menu>
           <Menu.Item>
+          <Icon name="share square outline" size="huge" />
             <h1>PICSHARE</h1>
           </Menu.Item>
           <Menu.Menu position="right">
@@ -16,7 +17,7 @@ class Navbar extends Component {
             </Menu.Item>
 
             <Menu.Item>
-              <Button onClick={this.props.handleLogOut}>Log out</Button>
+              <Button color="teal" onClick={this.props.handleLogOut}>Log out</Button>
             </Menu.Item>
           </Menu.Menu>
         </Menu>

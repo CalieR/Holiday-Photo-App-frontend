@@ -94,7 +94,7 @@ class AlbumContent extends Component {
   render() {
     return (
       <div>
-        <Modal trigger={<Button>About this album</Button>} closeIcon centered>
+        <Modal trigger={<Button color="teal">About this album</Button>} closeIcon centered>
           <Modal.Header>{this.props.chosenAlbum.name}</Modal.Header>
           <Modal.Content>
             <h3>This album was created by {this.state.creator}</h3>
@@ -105,16 +105,18 @@ class AlbumContent extends Component {
             ))}
           </Modal.Content>
         </Modal>
-        <Button color="black" onClick={() => this.showShare()}>
+        <Button  color="teal" onClick={() => this.showShare()}>
           Share this album with another user
         </Button>
-        <Button
+        <Button 
+        color="teal"
           content="Back to my albums"
           icon="left arrow"
           labelPosition="left"
           onClick={this.props.resetAlbumChoice}
         />
-        <Button
+        <Button 
+        color="teal"
           content="Upload a photo to this album"
           icon="add"
           labelPosition="left"

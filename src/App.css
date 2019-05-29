@@ -8,8 +8,14 @@
 }
 
 .welcome {
-  margin: 2rem auto;
-  /* border: 2px solid green; */
+  margin: 6rem auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2rem 0;
+  border-radius: 6px;
+}
+
+.welcome-buttons {
+  padding: 2rem;
 }
 
 .login-signup {
@@ -47,6 +53,10 @@
   /* border: 2px solid blue; */
   margin-bottom: 2rem;
   margin-top: 0;
+}
+
+.view-button {
+  margin: 2rem;
 }
 
 .new-album-container {
@@ -125,7 +135,6 @@
   position: relative;
   height: 100%;
   width: 100%;
-  
 }
 
 .back {
@@ -142,13 +151,4 @@
   right: 25px;
   z-index: 999;
   color: #fff;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
