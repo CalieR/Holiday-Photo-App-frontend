@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slide from "./Slide";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 
 class Slideshow extends Component {
   state = {
@@ -63,8 +63,24 @@ class Slideshow extends Component {
             <Slide key={i} image={image} />
           ))}
         </div>
-        <Button className="back" onClick={this.handlePrev}>Back</Button>
-        <Button className="forward" onClick={this.handleNext}>Forward</Button>
+        <Button
+          basic
+          icon
+          className="back"
+          color="teal"
+          onClick={this.handlePrev}
+        >
+          <Icon name="arrow alternate circle left outline" size="big" />
+        </Button>
+        <Button
+          basic
+          icon
+          className="forward"
+          color="teal"
+          onClick={this.handleNext}
+        >
+          <Icon name="arrow alternate circle right outline" size="big" />
+        </Button>
       </div>
     );
   }

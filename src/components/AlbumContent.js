@@ -40,7 +40,7 @@ class AlbumContent extends Component {
 
   getAlbum = albumId => {
     api.getAlbum(albumId).then(data => {
-      console.log(data);
+      // console.log(data);
       this.setState({
         photos: data.album.photos,
         creator: data.creator,
@@ -67,7 +67,6 @@ class AlbumContent extends Component {
       showUpload: true,
       showPhotos: false
     });
-    // console.log(this.props.chosenAlbum);
   };
 
   hideUpload = () => {
@@ -77,24 +76,16 @@ class AlbumContent extends Component {
     });
   };
 
-  // hide the photos when the dropzone is rendered
-  //refactor these two functions into a toggle function
-  // hidePhotos = () => {
-  //   this.setState({
-  //     showPhotos: false
-  //   });
-  // };
 
-  // showPhotos = () => {
-  //   this.setState({
-  //     showPhotos: true
-  //   });
-  // };
 
   render() {
     return (
-      <div>
-        <Modal trigger={<Button color="teal">About this album</Button>} closeIcon centered>
+      <div >
+        <Modal
+          trigger={<Button color="teal">About this album</Button>}
+          closeIcon
+          centered
+        >
           <Modal.Header>{this.props.chosenAlbum.name}</Modal.Header>
           <Modal.Content>
             <h3>This album was created by {this.state.creator}</h3>
@@ -105,29 +96,25 @@ class AlbumContent extends Component {
             ))}
           </Modal.Content>
         </Modal>
-        <Button  color="teal" onClick={() => this.showShare()}>
+        <Button color="teal" onClick={() => this.showShare()}>
           Share this album with another user
         </Button>
-        <Button 
-        color="teal"
+        <Button
+          color="teal"
           content="Back to my albums"
           icon="left arrow"
           labelPosition="left"
           onClick={this.props.resetAlbumChoice}
         />
-        <Button 
-        color="teal"
+        <Button
+          color="teal"
           content="Upload a photo to this album"
           icon="add"
           labelPosition="left"
           onClick={this.showUpload}
         />
 
-        {this.state.photos.length === 0 ? (
-          <h1>This album is empty!</h1>
-        ) : (
-          <h1>...</h1>
-        )}
+        {this.state.photos.length === 0 ? <h1>This album is empty!</h1> : null}
 
         {this.state.showShare === true ? (
           <Invitation

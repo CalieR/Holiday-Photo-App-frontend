@@ -76,12 +76,20 @@
   padding-bottom: 2rem;
 }
 
+.upload-container {
+  margin-top: 3rem;
+}
+
 .dropzone {
   /* border:2px solid brown; */
   margin-top: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.uploaded-image-preview {
+  margin-top: 2rem;
 }
 
 .new-pic-details {

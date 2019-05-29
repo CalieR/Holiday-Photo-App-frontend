@@ -53,6 +53,7 @@ class NewAlbumForm extends Component {
         <Form className="ui form" onSubmit={this.handleSubmit}>
           <Input
             required
+            fluid
             className="album-name field"
             type="text"
             placeholder="New album name"
@@ -60,8 +61,8 @@ class NewAlbumForm extends Component {
             value={this.state.newAlbumName}
             onChange={this.handleChange}
           />
-          <Button onClick={this.handleSubmit}>Submit</Button>
-          <Button onClick={this.props.clearNewAlbumForm}>Cancel</Button>
+          <Button color="teal"  onClick={this.handleSubmit}>Submit</Button>
+          <Button color="teal" onClick={this.props.clearNewAlbumForm}>Cancel</Button>
           {this.state.error !== "" ? <h3>{this.state.error}</h3> : null}
         </Form>
       </div>
