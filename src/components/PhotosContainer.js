@@ -15,13 +15,16 @@ class PhotosContainer extends Component {
     });
   };
 
-
   // only render the switch views element if there are some photos to view:
   render() {
     if (this.props.photos.length !== 0) {
       return (
         <>
-          <Button onClick={this.handleClick}>switch views</Button>
+        <div className="view-button">
+          <Button basic color="teal" onClick={this.handleClick}>
+            switch view
+          </Button>
+          </div>
           {this.state.clicked ? (
             <Slideshow photos={this.props.photos} />
           ) : (

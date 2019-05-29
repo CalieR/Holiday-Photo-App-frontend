@@ -76,8 +76,7 @@ class UserPage extends Component {
             clearNewAlbumForm={this.clearNewAlbumForm}
             refreshMyAlbums={this.refreshMyAlbums}
             handleNewAlbumClick={this.handleNewAlbumClick}
-            handleAlbumChoiceClick={this.handleAlbumChoiceClick}
-           
+            handleAlbumChoiceClick={this.handleAlbumChoiceClick} 
           />
         )}
         </div>

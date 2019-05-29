@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import api from "../util/api";
-import { Form, Segment, Icon, Button, Header, Input, TextArea } from "semantic-ui-react";
+import {
+  Form,
+  Segment,
+  Icon,
+  Button,
+  Header,
+  Input,
+  TextArea
+} from "semantic-ui-react";
 
 const CLOUDINARY_UPLOAD_PRESET = "wc5u6xxi";
 const CLOUDINARY_UPLOAD_URL =
@@ -20,7 +28,8 @@ class PhotoUploader extends Component {
     uploadedFile: null,
     title: "",
     description: "",
-    error: ""
+    error: "",
+    creator: ""
   };
 
   onImageDrop = files => {
@@ -28,7 +37,7 @@ class PhotoUploader extends Component {
     this.setState({
       uploadedFile: files[0]
     });
-    console.log(this.state.uploadedFile);
+    // console.log(this.state.uploadedFile);
     this.handleImageUpload(files[0]);
   };
 
@@ -100,8 +109,10 @@ class PhotoUploader extends Component {
             uploadedFileCloudinaryUrl: "",
             uploadedFile: null,
             title: "",
-            description: ""
+            description: "",
+            creator: data.creator
           });
+          // some method to pass the creator to the album content
           this.props.hideUpload();
           this.props.getAlbum(this.props.chosenAlbum.id);
           // this.props.showPhotos();
@@ -111,8 +122,9 @@ class PhotoUploader extends Component {
 
   render() {
     return (
-      <div>
+      <div className="upload-container">
         <Button
+          basic
           content="Back to photos"
           icon="left arrow"
           labelPosition="left"
@@ -125,7 +137,7 @@ class PhotoUploader extends Component {
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
                   {
-                    <Segment placeholder textAlign="center" tertiary circular>
+                    <Segment placeholder textAlign="center" secondary circular>
                       <h3>
                         Drop a file here, or click to select a file from your
                         computer.
@@ -143,7 +155,6 @@ class PhotoUploader extends Component {
           {this.state.uploadedFileCloudinaryUrl === "" ? null : (
             <>
               <div className="uploaded-image-preview">
-                <p>{this.state.uploadedFile.name}</p>
                 <img
                   src={this.state.uploadedFileCloudinaryUrl}
                   alt="cloudinary url"
@@ -152,10 +163,9 @@ class PhotoUploader extends Component {
 
               <div className="ui form new-pic-details">
                 <Form className="ui form ">
-                  <Header>
-                    Please give your new image a title and description:
-                  </Header>
+                  <Header>Please give your new image a title:</Header>
                   <Input
+                    fluid
                     required
                     className="field"
                     type="text"
@@ -164,21 +174,26 @@ class PhotoUploader extends Component {
                     value={this.state.title}
                     onChange={this.handleChange}
                   />
-
+                  <Header>
+                    Describe this image...who is in the picture, where was it
+                    taken?
+                  </Header>
                   <TextArea
                     required
                     className="field"
                     type="text"
-                    placeholder="Describe this image...who is in the picture, where was it taken?"
+                    placeholder="Image descrption"
                     name="description"
                     value={this.state.descripton}
                     onChange={this.handleChange}
                   />
                   <Form.Group inline>
-                    <Button onClick={this.handleSubmit}>Submit</Button>
-                    {this.state.error !== "" ? (
-                      <h3>{this.state.error}</h3>
-                    ) : null}
+                    <Button color="teal" onClick={this.handleSubmit}>
+                      Submit
+                    </Button>
+                    {this.state.error !== ""
+                      ? this.state.error.map(error => <h3>{error}</h3>)
+                      : null}
                   </Form.Group>
                 </Form>
               </div>

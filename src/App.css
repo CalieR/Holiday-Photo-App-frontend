@@ -8,8 +8,14 @@
 }
 
 .welcome {
-  margin: 2rem auto;
-  /* border: 2px solid green; */
+  margin: 6rem auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2rem 0;
+  border-radius: 6px;
+}
+
+.welcome-buttons {
+  padding: 2rem;
 }
 
 .login-signup {
@@ -49,6 +55,10 @@
   margin-top: 0;
 }
 
+.view-button {
+  margin: 2rem;
+}
+
 .new-album-container {
   margin-bottom: 2rem;
   display: flex;
@@ -66,12 +76,20 @@
   padding-bottom: 2rem;
 }
 
+.upload-container {
+  margin-top: 3rem;
+}
+
 .dropzone {
   /* border:2px solid brown; */
   margin-top: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.uploaded-image-preview {
+  margin-top: 2rem;
 }
 
 .new-pic-details {
@@ -125,7 +143,6 @@
   position: relative;
   height: 100%;
   width: 100%;
-  
 }
 
 .back {
@@ -142,13 +159,4 @@
   right: 25px;
   z-index: 999;
   color: #fff;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
