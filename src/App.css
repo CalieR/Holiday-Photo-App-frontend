@@ -56,6 +56,10 @@
   border-radius: 6px;
 }
 
+.already-sharing {
+  margin-top: 2rem;
+}
+
 .create-album-button {
   margin-top: 2rem;
 }

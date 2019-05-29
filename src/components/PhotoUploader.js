@@ -154,8 +154,9 @@ class PhotoUploader extends Component {
         <div>
           {this.state.uploadedFileCloudinaryUrl === "" ? null : (
             <>
-              <div className="uploaded-image-preview">
+              <div>
                 <img
+                  className="uploaded-image-preview"
                   src={this.state.uploadedFileCloudinaryUrl}
                   alt="cloudinary url"
                 />
