@@ -13,22 +13,26 @@ class AlbumsContainer extends Component {
     return (
       <>
         <div className="albums-control">
-          {this.props.myAlbums.length > 0 ? (
-            <h1>YOUR ALBUMS:</h1>
-          ) : (
+          {this.props.myAlbums.length === 0 ? (
             <h1>You don't have any albums yet!</h1>
+          ) : (
+            <>
+              <h1>YOUR ALBUMS:</h1>
+
+              <div className="create-album-button">
+                <Button
+                  className="create-album-button"
+                  color="teal"
+                  content="Create a new album"
+                  icon="add"
+                  labelPosition="left"
+                  onClick={this.props.handleNewAlbumClick}
+                />
+              </div>
+            </>
           )}
-          <div className="create-album-button">
-            <Button
-              className="create-album-button"
-              color="teal"
-              content="Create a new album"
-              icon="add"
-              labelPosition="left"
-              onClick={this.props.handleNewAlbumClick}
-            />
-          </div>
         </div>
+
         {this.props.viewNewAlbumForm ? (
           <NewAlbumForm
             clearNewAlbumForm={this.props.clearNewAlbumForm}

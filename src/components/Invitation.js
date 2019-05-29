@@ -6,7 +6,9 @@ class Invitation extends Component {
   state = {
     users: [],
     selectedUserId: 0,
-    admin: false
+    admin: false,
+
+    loading: true
   };
 
   componentDidMount() {
@@ -15,7 +17,8 @@ class Invitation extends Component {
         return { key: user.id, value: user.id, text: user.username };
       });
       this.setState({
-        users: usersFromAPI
+        users: usersFromAPI,
+        loading: false
       });
     });
   }
@@ -42,25 +45,34 @@ class Invitation extends Component {
       selectedUserId: 0,
       users: updatedUserList
     });
+
     this.props.hideShare();
   };
 
   render() {
     return (
-      <div className="invitation-container">
-        <Dropdown
-          selection
-          options={this.state.users}
-          onChange={this.handleChange}
-          name="select friend"
-          placeholder="Select user"
-        />
-        <Button color="teal" onClick={this.handleClick}>
-          Add user
-        </Button>
-        <Button color="teal" onClick={this.props.hideShare}>
-          Cancel
-        </Button>
+      <div>
+        {this.state.loading ? null : this.state.users.length === 0 ? (
+          <h1>All users are already sharing this album!</h1>
+        ) : (
+          <div className="invitation-container">
+            <div>
+              <Dropdown
+                selection
+                options={this.state.users}
+                onChange={this.handleChange}
+                name="select friend"
+                placeholder="Select user"
+              />
+              <Button color="teal" onClick={this.handleClick}>
+                Add user
+              </Button>
+              <Button color="teal" onClick={this.props.hideShare}>
+                Cancel
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

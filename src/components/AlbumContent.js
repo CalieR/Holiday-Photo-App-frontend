@@ -13,7 +13,8 @@ class AlbumContent extends Component {
     showPhotos: true,
     creator: "",
     userCount: 0,
-    users: []
+    users: [],
+    loading: true
   };
 
   componentDidMount() {
@@ -45,7 +46,8 @@ class AlbumContent extends Component {
         photos: data.album.photos,
         creator: data.creator,
         users: data.album.users,
-        userCount: data.album.users.length
+        userCount: data.album.users.length,
+        loading: false
       });
     });
   };
@@ -94,7 +96,7 @@ class AlbumContent extends Component {
           <Modal.Header>{this.props.chosenAlbum.name}</Modal.Header>
           <Modal.Content>
             <h4>Created by {this.state.creator}</h4>
-            <h4>How many photos?  {this.state.photos.length} </h4>
+            <h4>How many photos? {this.state.photos.length} </h4>
             <h4>Users sharing this album: {this.state.userCount} </h4>
             {this.state.users.map(user => (
               <p key={user.id}>{user.username}</p>
@@ -123,7 +125,9 @@ class AlbumContent extends Component {
           onClick={this.showUpload}
         />
 
-        {this.state.photos.length === 0 ? <h1>This album is empty!</h1> : null}
+        {this.state.loading ? null : this.state.photos.length === 0 ? (
+          <h1>This album is empty!</h1>
+        ) : null}
 
         {this.state.showShare === true ? (
           <Invitation
