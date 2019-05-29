@@ -53,10 +53,13 @@ class Invitation extends Component {
           options={this.state.users}
           onChange={this.handleChange}
           name="select friend"
-          placeholder="select friend"
+          placeholder="Select user"
         />
         <Button color="teal" onClick={this.handleClick}>
           Add user
+        </Button>
+        <Button color="teal" onClick={this.props.hideShare}>
+          Cancel
         </Button>
       </div>
     );

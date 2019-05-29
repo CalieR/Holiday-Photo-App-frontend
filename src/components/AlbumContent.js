@@ -40,7 +40,7 @@ class AlbumContent extends Component {
 
   getAlbum = albumId => {
     api.getAlbum(albumId).then(data => {
-      // console.log(data);
+      // debugger;
       this.setState({
         photos: data.album.photos,
         creator: data.creator,
@@ -86,7 +86,6 @@ class AlbumContent extends Component {
               icon="question"
               labelPosition="left"
               content="About this album"
-              
             />
           }
           closeIcon
@@ -95,15 +94,14 @@ class AlbumContent extends Component {
           <Modal.Header>{this.props.chosenAlbum.name}</Modal.Header>
           <Modal.Content>
             <h4>Created by {this.state.creator}</h4>
-            <h4>Contains {this.state.photos.length} photos</h4>
-            <h4>Currently shared by {this.state.userCount} users: </h4>
+            <h4>How many photos?  {this.state.photos.length} </h4>
+            <h4>Users sharing this album: {this.state.userCount} </h4>
             {this.state.users.map(user => (
               <p key={user.id}>{user.username}</p>
             ))}
           </Modal.Content>
         </Modal>
         <Button
-          
           color="teal"
           icon="share"
           labelPosition="left"
@@ -111,7 +109,6 @@ class AlbumContent extends Component {
           onClick={() => this.showShare()}
         />
         <Button
-          
           color="teal"
           content="Back to my albums"
           icon="left arrow"
@@ -119,7 +116,6 @@ class AlbumContent extends Component {
           onClick={this.props.resetAlbumChoice}
         />
         <Button
-          
           color="teal"
           content="Upload a photo to this album"
           icon="add"

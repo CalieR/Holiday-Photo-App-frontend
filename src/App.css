@@ -82,7 +82,6 @@
 }
 
 .photo-uploader-container {
-  /* border: 2px solid red; */
   padding-bottom: 2rem;
 }
 
@@ -91,7 +90,6 @@
 }
 
 .dropzone {
-  /* border:2px solid brown; */
   margin-top: 1.75rem;
   display: flex;
   align-items: center;
@@ -100,6 +98,8 @@
 
 .uploaded-image-preview {
   margin-top: 2rem;
+  max-width: 700px;
+  height: auto;
 }
 
 .new-pic-details {
