@@ -16,6 +16,11 @@ class UserPage extends Component {
   // if there is a token stored,
   // set state if successfully completed
   componentDidMount() {
+    this.renderUserPage();
+  }
+
+  // extrapolated render method from componentDidMount
+  renderUserPage = () => {
     const token = localStorage.getItem("token");
     if (token) {
       api.getUserProfile().then(user => {
@@ -26,7 +31,7 @@ class UserPage extends Component {
         });
       });
     }
-  }
+  };
 
   handleNewAlbumClick = () => {
     this.setState({
@@ -54,10 +59,12 @@ class UserPage extends Component {
     });
   };
 
+  // get updated photo count, on returning to albums page from an individual album:
   resetAlbumChoice = () => {
     this.setState({
       chosenAlbum: null
     });
+    this.renderUserPage();
   };
 
   render() {
