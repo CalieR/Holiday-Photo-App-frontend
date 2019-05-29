@@ -51,9 +51,9 @@ class Invitation extends Component {
 
   render() {
     return (
-      <div>
+      <div className="sharing">
         {this.state.loading ? null : this.state.users.length === 0 ? (
-          <h1 className="already-sharing">All users are already sharing this album!</h1>
+          <h1 >All users are already sharing this album!</h1>
         ) : (
           <div className="invitation-container">
             <div>
