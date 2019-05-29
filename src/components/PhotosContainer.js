@@ -5,13 +5,19 @@ import Slideshow from "./Slideshow";
 
 class PhotosContainer extends Component {
   state = {
-    clicked: false
+    clicked: false,
+    buttonText: "View slideshow"
   };
 
   handleClick = () => {
-    const toggleClicked = this.state.clicked ? false : true;
+    const changeView = this.state.clicked ? false : true;
+    const changeText =
+      this.state.buttonText === "View slideshow"
+        ? "View list"
+        : "View slideshow";
     this.setState({
-      clicked: toggleClicked
+      clicked: changeView,
+      buttonText: changeText
     });
   };
 
@@ -20,10 +26,15 @@ class PhotosContainer extends Component {
     if (this.props.photos.length !== 0) {
       return (
         <>
-        <div className="view-button">
-          <Button basic color="teal" onClick={this.handleClick}>
-            switch view
-          </Button>
+          <div className="view-button">
+            <Button
+              basic
+              color="teal"
+              icon="exchange"
+              labelPosition="left"
+              content={this.state.buttonText}
+              onClick={this.handleClick}
+            />
           </div>
           {this.state.clicked ? (
             <Slideshow photos={this.props.photos} />

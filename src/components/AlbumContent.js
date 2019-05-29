@@ -80,7 +80,15 @@ class AlbumContent extends Component {
     return (
       <div>
         <Modal
-          trigger={<Button color="teal">About this album</Button>}
+          trigger={
+            <Button
+              color="teal"
+              icon="question"
+              labelPosition="left"
+              content="About this album"
+              
+            />
+          }
           closeIcon
           centered
         >
@@ -94,10 +102,16 @@ class AlbumContent extends Component {
             ))}
           </Modal.Content>
         </Modal>
-        <Button color="teal" onClick={() => this.showShare()}>
-          Share this album with another user
-        </Button>
         <Button
+          
+          color="teal"
+          icon="share"
+          labelPosition="left"
+          content="Share this album with another user"
+          onClick={() => this.showShare()}
+        />
+        <Button
+          
           color="teal"
           content="Back to my albums"
           icon="left arrow"
