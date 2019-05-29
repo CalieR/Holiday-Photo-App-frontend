@@ -187,14 +187,16 @@ class PhotoUploader extends Component {
                     value={this.state.descripton}
                     onChange={this.handleChange}
                   />
-                  <Form.Group inline>
+                  <div>
                     <Button color="teal" onClick={this.handleSubmit}>
                       Submit
                     </Button>
                     {this.state.error !== ""
-                      ? this.state.error.map(error => <h3>{error}</h3>)
+                      ? this.state.error.map((error, index) => (
+                          <h3 key={index}>{error}!</h3>
+                        ))
                       : null}
-                  </Form.Group>
+                  </div>
                 </Form>
               </div>
             </>

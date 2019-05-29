@@ -45,10 +45,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
   /* border: 5px solid red; */
 }
 
+.main-body {
+  width: 70%;
+  margin: 2rem auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2rem 0;
+  border-radius: 6px;
+}
+
+.create-album-button {
+  margin-top: 2rem;
+}
 .albums-control {
   /* border: 2px solid blue; */
   margin-bottom: 2rem;
@@ -72,7 +82,6 @@
 }
 
 .photo-uploader-container {
-  /* border: 2px solid red; */
   padding-bottom: 2rem;
 }
 
@@ -81,7 +90,6 @@
 }
 
 .dropzone {
-  /* border:2px solid brown; */
   margin-top: 1.75rem;
   display: flex;
   align-items: center;
@@ -90,6 +98,8 @@
 
 .uploaded-image-preview {
   margin-top: 2rem;
+  max-width: 700px;
+  height: auto;
 }
 
 .new-pic-details {
@@ -98,14 +108,6 @@
   align-items: center;
   justify-content: center;
   /* border: 2px solid brown; */
-}
-
-.main-body {
-  width: 80%;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 2rem 0;
-  border-radius: 6px;
 }
 
 .nav-header {

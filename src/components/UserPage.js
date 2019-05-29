@@ -10,7 +10,7 @@ class UserPage extends Component {
     myAlbums: [],
     viewNewAlbumForm: false,
     chosenAlbum: null,
-    chosenAlbumCreator: ''
+    chosenAlbumCreator: ""
   };
 
   // if there is a token stored,
@@ -19,6 +19,7 @@ class UserPage extends Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.getUserProfile().then(user => {
+        // debugger;
         this.setState({
           username: user.username,
           myAlbums: user.albums
@@ -67,18 +68,21 @@ class UserPage extends Component {
           handleLogOut={this.props.handleLogOut}
         />
         <div className="main-body">
-        {this.state.chosenAlbum ? (
-          <AlbumContent chosenAlbum={this.state.chosenAlbum} resetAlbumChoice={this.resetAlbumChoice}/>
-        ) : (
-          <AlbumsContainer
-            myAlbums={this.state.myAlbums}
-            viewNewAlbumForm={this.state.viewNewAlbumForm}
-            clearNewAlbumForm={this.clearNewAlbumForm}
-            refreshMyAlbums={this.refreshMyAlbums}
-            handleNewAlbumClick={this.handleNewAlbumClick}
-            handleAlbumChoiceClick={this.handleAlbumChoiceClick} 
-          />
-        )}
+          {this.state.chosenAlbum ? (
+            <AlbumContent
+              chosenAlbum={this.state.chosenAlbum}
+              resetAlbumChoice={this.resetAlbumChoice}
+            />
+          ) : (
+            <AlbumsContainer
+              myAlbums={this.state.myAlbums}
+              viewNewAlbumForm={this.state.viewNewAlbumForm}
+              clearNewAlbumForm={this.clearNewAlbumForm}
+              refreshMyAlbums={this.refreshMyAlbums}
+              handleNewAlbumClick={this.handleNewAlbumClick}
+              handleAlbumChoiceClick={this.handleAlbumChoiceClick}
+            />
+          )}
         </div>
       </>
     );

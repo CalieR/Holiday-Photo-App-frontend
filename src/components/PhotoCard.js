@@ -16,17 +16,22 @@ class PhotoCard extends Component {
         />
         <Card.Content>
           <Card.Header>{this.props.photo.title}</Card.Header>
+          <Card.Meta>Uploaded by {this.props.photo.user.username}</Card.Meta>
           <Card.Description>{this.props.photo.description}</Card.Description>
         </Card.Content>
         <Modal
-          trigger={<Button>Show Full Size</Button>}
+          trigger={<Button >Open</Button>}
           closeIcon
           centered
           className="modal-overlay"
         >
           <Modal.Header>{this.props.photo.title}</Modal.Header>
           <Modal.Content image>
-            <Image className="modal-img" src={this.props.photo.image_url} photo={this.props.photo} />
+            <Image
+              className="modal-img"
+              src={this.props.photo.image_url}
+              photo={this.props.photo}
+            />
           </Modal.Content>
         </Modal>
       </Card>
