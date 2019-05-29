@@ -9,7 +9,7 @@ class AlbumCard extends Component {
       <Card onClick={() => this.props.handleAlbumChoiceClick(this.props.album)}>
         <Card.Content>
           <Card.Header>
-            <Icon name="object group outline" size="massive" />
+            <Icon name="object ungroup outline" color="grey" size="massive"  />
           </Card.Header>
           <Divider />
           <Card.Header id={this.props.album.id}>

@@ -56,7 +56,7 @@ class Landing extends Component {
           <Form className="login-signup">
             <Form.Field>
               <h3>Choose a username and password</h3>
-              <p>(Your username must be unique)</p>
+             
 
               <input
                 onChange={this.props.handleChange}
