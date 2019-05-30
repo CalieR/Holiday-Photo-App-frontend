@@ -24,7 +24,6 @@ class UserPage extends Component {
     const token = localStorage.getItem("token");
     if (token) {
       api.getUserProfile().then(user => {
-        // debugger;
         this.setState({
           username: user.username,
           myAlbums: user.albums

@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 PicShare enables friends to combine their individual photos from an event into a single shared album. 
 
 DEMO VIDEO HERE
+![](https://media.giphy.com/media/5QPbsovgF2vzmnJ8Kb/giphy.mp4
+)
 
 # GETTING STARTED:
 

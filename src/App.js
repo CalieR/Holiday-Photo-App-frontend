@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import "./App.css";
 import Landing from "./components/Landing";
@@ -31,9 +30,10 @@ class App extends Component {
   onLoginClicked = e => {
     e.preventDefault();
     api.login(this.state.username, this.state.password).then(data => {
-      console.log(data);
       if (data.error) {
-        alert("You have entered the wrong username or password.  Please check your details and try again");
+        alert(
+          "You have entered the wrong username or password.  Please check your details and try again"
+        );
       } else {
         localStorage.setItem("token", data.jwt);
         this.setState({ logged_in: true, username: data.username });
@@ -43,13 +43,11 @@ class App extends Component {
 
   onSignupClicked = e => {
     e.preventDefault();
-    // user.create (fetch)
-    // then api.login - duplication!
-    // refactor, pass route endpoint
     api.signup(this.state.username, this.state.password).then(data => {
-      // console.log(data);
       if (data.error) {
-        alert("There is already a user with that name.  Please select another username");
+        alert(
+          "There is already a user with that name.  Please select another username"
+        );
       } else {
         localStorage.setItem("token", data.jwt);
         this.setState({ logged_in: true, username: data.username });
@@ -69,7 +67,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-     
         {this.state.logged_in ? (
           <UserPage
             handleLogOut={this.handleLogOut}
