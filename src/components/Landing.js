@@ -17,6 +17,7 @@ class Landing extends Component {
           <Form className="login-signup">
             <Form.Field>
               <input
+                autoComplete="off"
                 onChange={this.props.handleChange}
                 id="username"
                 type="text"
@@ -56,9 +57,9 @@ class Landing extends Component {
           <Form className="login-signup">
             <Form.Field>
               <h3>Choose a username and password</h3>
-             
 
               <input
+                autoComplete="off"
                 onChange={this.props.handleChange}
                 id="username"
                 type="text"
