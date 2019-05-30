@@ -14,10 +14,9 @@ class Landing extends Component {
     if (this.state.choice === "login") {
       return (
         <Grid centered>
-          <Form autoComplete="off" className="login-signup">
+          <Form className="login-signup">
             <Form.Field>
               <input
-                autocomplete="off"
                 onChange={this.props.handleChange}
                 id="username"
                 type="text"
@@ -55,11 +54,11 @@ class Landing extends Component {
       return (
         <Grid centered>
           <Form className="login-signup">
-            <Form.Field autoComplete="off">
+            <Form.Field>
               <h3>Choose a username and password</h3>
+             
 
               <input
-                autocomplete="off"
                 onChange={this.props.handleChange}
                 id="username"
                 type="text"
@@ -70,7 +69,6 @@ class Landing extends Component {
             </Form.Field>
             <Form.Field>
               <input
-                autocomplete="off"
                 onChange={this.props.handleChange}
                 id="password"
                 type="password"
@@ -93,7 +91,7 @@ class Landing extends Component {
       <Container className="welcome">
         <Icon name="share square outline" size="huge" />
         <Header className="welcome-header" size="huge">
-          Welcome to PicShare
+          Welcome to Picshare
         </Header>
         <div className="welcome-buttons">
           <Button color="teal" onClick={this.viewLogin}>
