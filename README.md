@@ -6,9 +6,10 @@ PicShare enables friends to combine their individual photos from an event into a
 
 DEMO VIDEO HERE
 
-# GETTING STARTED:
+# Getting started:
+This is the frontend repository for PicShare.
 
-- This is the frontend repository for PicShare. Fork and clone this repository
+- Fork and clone this repository
 - npm install, npm install semantic-ui-react, npm start
 - For the backend of this project, go to https://github.com/CalieR/Holiday-Photo-App-backend and follow the getting started instructions.
 
