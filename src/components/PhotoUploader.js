@@ -33,11 +33,9 @@ class PhotoUploader extends Component {
   };
 
   onImageDrop = files => {
-    // debugger;
     this.setState({
       uploadedFile: files[0]
     });
-    // console.log(this.state.uploadedFile);
     this.handleImageUpload(files[0]);
   };
 
@@ -112,10 +110,8 @@ class PhotoUploader extends Component {
             description: "",
             creator: data.creator
           });
-          // some method to pass the creator to the album content
           this.props.hideUpload();
           this.props.getAlbum(this.props.chosenAlbum.id);
-          // this.props.showPhotos();
         }
       });
   };
@@ -166,6 +162,7 @@ class PhotoUploader extends Component {
                 <Form className="ui form ">
                   <Header>Please give your new image a title:</Header>
                   <Input
+                  autoComplete="off"
                     fluid
                     required
                     className="field"
@@ -180,6 +177,7 @@ class PhotoUploader extends Component {
                     taken?
                   </Header>
                   <TextArea
+                  autoComplete="off"
                     required
                     className="field"
                     type="text"
