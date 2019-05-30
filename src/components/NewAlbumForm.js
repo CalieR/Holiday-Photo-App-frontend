@@ -52,6 +52,7 @@ class NewAlbumForm extends Component {
       <div className="ui form new-album-container">
         <Form className="ui form" onSubmit={this.handleSubmit}>
           <Input
+            autoComplete="off"
             required
             fluid
             className="album-name field"
@@ -61,8 +62,12 @@ class NewAlbumForm extends Component {
             value={this.state.newAlbumName}
             onChange={this.handleChange}
           />
-          <Button color="teal"  onClick={this.handleSubmit}>Submit</Button>
-          <Button color="teal" onClick={this.props.clearNewAlbumForm}>Cancel</Button>
+          <Button color="teal" onClick={this.handleSubmit}>
+            Submit
+          </Button>
+          <Button color="teal" onClick={this.props.clearNewAlbumForm}>
+            Cancel
+          </Button>
           {this.state.error !== "" ? <h3>{this.state.error}</h3> : null}
         </Form>
       </div>
