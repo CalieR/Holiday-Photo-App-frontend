@@ -1,12 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## README
 
 PicShare enables friends to combine their individual photos from an event into a single shared album. 
 
 DEMO VIDEO HERE
-![](https://media.giphy.com/media/5QPbsovgF2vzmnJ8Kb/giphy.mp4
-)
+![](https://media.giphy.com/media/5QPbsovgF2vzmnJ8Kb/giphy.mp4)
+![](https://media.giphy.com/media/wsTyZ6hHSKoo2MP3Hr/giphy.gif)
+![](https://media.giphy.com/media/9DegZAsZSTEWE0gwVs/giphy.gif)
+![](https://media.giphy.com/media/EExX2VGaF8mq7muPIt/giphy.gif)
+
 
 # GETTING STARTED:
 
