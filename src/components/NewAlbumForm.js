@@ -52,6 +52,7 @@ class NewAlbumForm extends Component {
       <div className="ui form new-album-container">
         <Form className="ui form" onSubmit={this.handleSubmit}>
           <Input
+          autoComplete="off"
             required
             fluid
             className="album-name field"

@@ -41,7 +41,6 @@ class AlbumContent extends Component {
 
   getAlbum = albumId => {
     api.getAlbum(albumId).then(data => {
-      // debugger;
       this.setState({
         photos: data.album.photos,
         creator: data.creator,
@@ -83,7 +82,6 @@ class AlbumContent extends Component {
       <div>
         <div className="back-button">
           <Button
-         
             color="teal"
             content="Back to my albums"
             icon="left arrow"
@@ -105,11 +103,11 @@ class AlbumContent extends Component {
         >
           <Modal.Header>{this.props.chosenAlbum.name}</Modal.Header>
           <Modal.Content>
-            <h4>Created by {this.state.creator}</h4>
-            <h4>How many photos? {this.state.photos.length} </h4>
-            <h4>Users sharing this album: {this.state.userCount} </h4>
+            <h4>Created by: {this.state.creator}</h4>
+            <h4>Photo count: {this.state.photos.length} </h4>
+            <h4>Friends sharing this album: {this.state.userCount} </h4>
             {this.state.users.map(user => (
-              <p key={user.id}>{user.username}</p>
+              <p key={user.id}>* {user.username}</p>
             ))}
           </Modal.Content>
         </Modal>
