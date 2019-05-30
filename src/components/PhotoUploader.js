@@ -166,6 +166,7 @@ class PhotoUploader extends Component {
                 <Form className="ui form ">
                   <Header>Please give your new image a title:</Header>
                   <Input
+                  autoComplete="off"
                     fluid
                     required
                     className="field"
