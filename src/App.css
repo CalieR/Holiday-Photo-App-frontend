@@ -73,6 +73,10 @@
   margin: 2rem;
 }
 
+.back-button {
+  margin-bottom: 2rem;
+}
+
 .new-album-container {
   margin-bottom: 2rem;
   display: flex;

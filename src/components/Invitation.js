@@ -7,7 +7,6 @@ class Invitation extends Component {
     users: [],
     selectedUserId: 0,
     admin: false,
-
     loading: true
   };
 
@@ -37,7 +36,6 @@ class Invitation extends Component {
       this.props.chosenAlbum.id,
       this.state.admin
     );
-
     const updatedUserList = this.state.users.filter(
       u => u.key !== this.state.selectedUserId
     );
@@ -45,7 +43,7 @@ class Invitation extends Component {
       selectedUserId: 0,
       users: updatedUserList
     });
-
+    // about tab not refreshing with newly added users.
     this.props.hideShare();
   };
 
@@ -53,7 +51,7 @@ class Invitation extends Component {
     return (
       <div className="sharing">
         {this.state.loading ? null : this.state.users.length === 0 ? (
-          <h1 >All users are already sharing this album!</h1>
+          <h1>All users are already sharing this album!</h1>
         ) : (
           <div className="invitation-container">
             <div>
@@ -65,7 +63,7 @@ class Invitation extends Component {
                 placeholder="Select user"
               />
               <Button color="teal" onClick={this.handleClick}>
-                Add user
+                Share
               </Button>
               <Button color="teal" onClick={this.props.hideShare}>
                 Cancel
