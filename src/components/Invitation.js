@@ -63,7 +63,7 @@ class Invitation extends Component {
                 placeholder="Select user"
               />
               <Button color="teal" onClick={this.handleClick}>
-                Add user
+                Share
               </Button>
               <Button color="teal" onClick={this.props.hideShare}>
                 Cancel

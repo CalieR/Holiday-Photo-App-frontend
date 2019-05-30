@@ -6,15 +6,15 @@ import Slideshow from "./Slideshow";
 class PhotosContainer extends Component {
   state = {
     clicked: false,
-    buttonText: "View slideshow"
+    buttonText: "View photo slideshow"
   };
 
   handleClick = () => {
     const changeView = this.state.clicked ? false : true;
     const changeText =
-      this.state.buttonText === "View slideshow"
-        ? "View list"
-        : "View slideshow";
+      this.state.buttonText === "View photo slideshow"
+        ? "View photo list"
+        : "View photo slideshow";
     this.setState({
       clicked: changeView,
       buttonText: changeText

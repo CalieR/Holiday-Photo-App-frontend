@@ -81,6 +81,16 @@ class AlbumContent extends Component {
   render() {
     return (
       <div>
+        <div className="back-button">
+          <Button
+         
+            color="teal"
+            content="Back to my albums"
+            icon="left arrow"
+            labelPosition="left"
+            onClick={this.props.resetAlbumChoice}
+          />
+        </div>
         <Modal
           trigger={
             <Button
@@ -110,13 +120,7 @@ class AlbumContent extends Component {
           content="Share this album with another user"
           onClick={() => this.showShare()}
         />
-        <Button
-          color="teal"
-          content="Back to my albums"
-          icon="left arrow"
-          labelPosition="left"
-          onClick={this.props.resetAlbumChoice}
-        />
+
         <Button
           color="teal"
           content="Upload a photo to this album"
