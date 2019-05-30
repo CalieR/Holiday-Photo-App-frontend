@@ -7,7 +7,9 @@ import { Container, Button, Card } from "semantic-ui-react";
 import NewAlbumForm from "./NewAlbumForm";
 
 class AlbumsContainer extends Component {
-  state = {};
+  state = {
+    loading: true
+  };
 
   render() {
     return (
@@ -26,7 +28,7 @@ class AlbumsContainer extends Component {
             </div>
           </>
 
-          {this.props.myAlbums.length === 0 ? (
+          {this.state.loading ? null : this.props.myAlbums.length === 0 ? (
             <h1>You don't have any albums yet!</h1>
           ) : (
             <h1>YOUR ALBUMS:</h1>
