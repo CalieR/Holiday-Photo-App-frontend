@@ -92,7 +92,7 @@ class Landing extends Component {
       <Container className="welcome">
         <Icon name="share square outline" size="huge" />
         <Header className="welcome-header" size="huge">
-          Welcome to Picshare
+          Welcome to PicShare
         </Header>
         <div className="welcome-buttons">
           <Button color="teal" onClick={this.viewLogin}>
