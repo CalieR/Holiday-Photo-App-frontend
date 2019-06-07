@@ -19,18 +19,19 @@ PicShare is my final project for Mod5 of the Flatiron School Software Engineerin
 
 I learned A LOT during this project. In fact I've decided to build it again, taking my learnings on board.
 
-React Routes should be created at the start, as you are building your components:
-I tried to refactor my project to include Routes once I had a working prototype, but it was pretty awkward.
+1. React Routes should be created at the start, as you are building your components:
+   I tried to refactor my project to include Routes once I had a working prototype, but it was pretty awkward.
 
-Same goes for tests:
-I tried to learn testing with Enzyme and Jest, and practise it on some of my components. It was also tricky to implement.
-The rebuild will follow a TDD approach, testing each component as I build it.
+2. Same goes for tests:
+   I tried to learn testing with Enzyme and Jest, and practise it on some of my components. It was also tricky to implement.
+   The rebuild will follow a TDD approach, testing each component as I build it.
 
-...and design!
-I was more interested in getting a working prototype then thinking about how to style it.
-Semantic-UI-React provided most of the styling for this app; building Semantic components from the start would have saved some refactoring.
+3. ...and design!
+   Initially I was more concerned with getting a working prototype then thinking about how to style it.
+   Semantic-UI-React provided most of the styling for this app; building Semantic components from the start would have saved some refactoring.
 
-We had a couple of days of planning, then 2 weeks to build our apps. I could have used the whole 2 weeks just to plan.
+4. Plan thoroughly:
+   We had a couple of days of planning, then 2 weeks to build our apps. I could have used the whole 2 weeks just to plan.
 
 # Getting started:
 
