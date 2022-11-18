@@ -10,7 +10,7 @@
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.4",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "react-siema": "^1.0.1",
     "react-simple-modal-slideshow": "^1.0.1",
     "react-test-renderer": "^16.8.6",
